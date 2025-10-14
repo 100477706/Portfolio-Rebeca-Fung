@@ -1,0 +1,1138 @@
+<!DOCTYPE html>
+<html lang = 'es-ES'>
+    <head>
+        <link href="style/styles.css"
+              rel="stylesheet"
+              type="text/css">
+        <link href='https://fonts.googleapis.com/css?family=Lily%20Script%20One' rel='stylesheet'>
+        <meta charset = 'UTF-8'>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Viaje de Papá Noel</title>
+        <link rel="icon" type="image/x-icon" href="images/Santa1-transformed.png">
+        <link rel="stylesheet" 
+        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+        <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+
+        <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js">  </script>
+
+        <!--Java Script para las transiciones del menu-->
+        <script src="script/menuPrincipalTransition.js" async></script>
+        <!--Java Script para el contador-->
+        <script src="script/countdown.js" async></script>
+        <!--Java Script para Formulario de Registro-->
+        <script src="script/register.js" async></script>
+        <!--Java Script para Formulario de Log In-->
+        <script src="script/logIn.js" async></script>
+        <!--Java Script para el Test de Bondad-->
+        <script src="script/testDeBondad.js" async></script>
+        <!--Java Script para Mostrar la Información del Usuario-->
+        <script src="script/userInfo.js" async></script>
+        <!--Java Script para Gestionar el envío de Cartas-->
+        <script src="script/mailManager.js" async></script>
+        <!--Java Script para el apartado de mis cartas-->
+        <script src="script/myCards.js" async></script>
+        <!--Java Script para Los botones de los juegos-->
+        <script src="script/gameButtons.js" async></script>
+        <!--Java Script para el calendario de Adviento-->
+        <script src="script/popupAdviento.js" async></script>
+        <!--Java Script para las transiciones de las imagenes del paquete 1-->
+        <script src="script/travelPackagesImages.js" async></script>
+        <!--Java Script para las transiciones de las imagenes del paquete 2-->
+        <script src="script/travelPackagesImages2.js" async></script>
+        <!--Java Script para las transiciones de las imagenes del paquete 3-->
+        <script src="script/travelPackagesImages3.js" async></script>
+        <!--Java Script para las reservas de los viajes-->
+        <script src="script/travelReserve.js" async></script>
+        <!--Java Script para el apartado de mis paquetes-->
+        <script src="script/myPackages.js" async></script>
+
+        <!--Java Scripts para la apertura de Pop Ups de contenido-->
+        <script src="script/logInFunction.js" async></script>
+        <script src="script/registerFunction.js" async></script>
+        <script src="script/userInfoFunction.js" async></script>
+        <script src="script/changeUserFunction.js" async></script>
+        <script src="script/changePasswordFunction.js" async></script>
+        <script src="script/changeCityFunction.js" async></script>
+        <script src="script/changeEmailFunction.js" async></script>
+        <script src="script/changeCountryFunction.js" async></script>
+        <script src="script/myCardsFunction.js" async></script>
+        <script src="script/travelPackagesFunction.js" async></script>
+        <script src="script/myPackagesFunction.js" async></script>
+
+    </head>
+
+    <body>
+
+        <header class="Encabezado" id="Encabezado">
+            <div class="logo"> <!--Logo de la pagina-->
+                <img src="images/Santa1-transformed.png" alt="">
+            </div>
+            
+            <nav class="MenuPrincipal"> <!--Menú Principal-->
+                    <a href="#Page1" class="active">Home</a>
+                    <a href="#Page2">Papá Noel</a>
+                    <a href="#Page3">Las Cartas</a>
+                    <a href="#Page4">Envía Tu Carta</a>
+                    <a href="#Page5">¡Juega Ahora!</a>
+                    <a href="#Page6">Calendario de Adviento</a>
+                    <a href="#Page7">Paquetes de Viajes</a>
+                    <button id="LogInBotton" onclick="openPopUpLogIn()">Iniciar Sesión</button>
+                    <button id="RegisterBotton" onclick="openPopUpRegister()">Registro</button>
+
+                    <!--División del Frame para la cuenta del Usuario-->
+                    <div id="MyMenu" class="MyMenu" style="display:none;">
+                        <button id="MyAccount" onclick="openDropDown()">Mi Cuenta</button>
+                        <div id="DropDown" class="DropDown" style="display:none;">
+                            <a class="no-border" href="#" onclick="openMyMenu()" style="color: black;">Mi Perfil</a>
+                            <a class="no-border" href="#Page1" onclick="openMyCards()" style="color: black;">Mis Cartas</a>
+                            <a class="no-border" href="#" onclick="openMyPackages()"  style="color: black;">Mis Viajes</a>
+                            <a class="no-border" href="#" onclick="openPopUpTestDeBondad()"  style="color: black;">Test de bondad</a>
+                            <a class="no-border" href="#" onclick="closeSession()" style="color: black;">Cerrar Sesión</a>
+                        </div>
+                    </div>
+                    
+
+                    <!--División del Frame para Formulario de Registro-->
+                    <div class="cargaRegistro" id="cargaRegistro" style="display:none;">
+                        <div id="contenidoRegistro">
+                            <section class="RegisterPage">
+                                <div class="RegisterTitle">
+                                    <h2>Registráte Aquí</h2>
+                                </div>
+                    
+                                <form id="RegisterForm" onsubmit="return checkPassword() && almacenarDatos();">
+                                    <div>
+                                        <label for="username">Nombre de Usuario: </label>
+                                        <input type="text" class="inputRform" id="username" name="username" required
+                                            minlength="3" placeholder="Tu Nombre Completo...">
+                                    </div>
+                                    <div>
+                                        <label for="password">Contraseña: </label>
+                                        <input type="password" id="password" name="password" placeholder="Contraseña..."
+                                           title="La contraseña debe tener 12 caracteres, y al menos: 1 letra minúscula, 1 mayúscula, 2 números y un símbolo especial"
+                                            pattern="^(?=(?:[^0-9]*[0-9]){2})(?=.*[a-z])(?=.*[A-Z])(?=.*[\W_]).{12}$"
+                                            required>
+                                    </div>
+                                    <div>
+                                        <label for="ciudadd">Ciudad: </label>
+                                        <input type="text" class="inputRform" id="ciudadd" name="ciudad" required
+                                               minlength="3" placeholder="Ciudad en la que vives...">
+                                    </div>
+                                    <div>
+                                        <label for="correoo">Email: </label>
+                                        <input type="email" class="inputRform" id="correoo" name="correo" required placeholder="Tu Correo...">
+                                    </div>
+                                    <div>
+                                        <label for="confirmPassword">Confirme Contraseña: </label>
+                                        <input type="password" id="confirmPassword" name="confirmPassword" placeholder="Repita la Contraseña..."
+                                            pattern="^(?=(?:[^0-9]*[0-9]){2})(?=.*[a-z])(?=.*[A-Z])(?=.*[\W_]).{12}$"
+                                            required>
+                                    </div>
+                                    <div>
+                                       <label for="paiss">País: </label>
+                                        <input type="text" class="inputRform" id="paiss" name="pais" required
+                                               minlength="3" placeholder="País en el que vives...">
+                                    </div>
+
+                                    <!--<input type="submit" value="Aceptar">-->
+                                    <div class="rBottons">
+                                        <button type="button" onclick="clearForm()">Limpiar Campos</button>
+                                        <button type="submit">Aceptar</button>
+                                        <button type="button" onclick="closeForm()">Cancelar</button>
+                                    </div>
+                    
+                    
+
+                    
+                                </form>
+                    
+                            </section>
+                        </div>
+                    </div>
+
+                    <!--División del Frame para Formulario de Log In-->
+                    <div class="cargaLogIn" id="cargaLogIn" style="display: none;">
+                        <div id="contenidoLogIn">
+                            <section class="LogInPage">
+                                <div class="LogInTitle">
+                                    <h2>Iniciar Sesión</h2>
+                                </div>
+                                
+                                <form id="LogInForm" class="LogInForm" onsubmit="userRegister(); return false;">
+                                    <label class="labelLogIn" for="liusername">Nombre de Usuario: </label><br>
+                                    <input type="text" class="inputLIform" id="liusername" name="liusername" required 
+                                        minlength="3" placeholder="Tu Nombre Completo..."><br>
+                                    
+                                    <label class="labelLogIn" for="lipassword">Contraseña: </label><br>
+                                    <input type="password" id="lipassword" name="lipassword" placeholder="Contraseña..."
+                                        pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*\d.*\d)(?=.*[@#$%^&+=-_]).{12}"
+                                        required><br>
+                                    
+                                    <div class="liBottons">
+                                        <button type="submit">Entrar</button>
+                                        <button type="button" onclick="closePopUpLogIn()">Cancelar</button>
+                                    </div>
+                                </form>
+                            </section>
+                        </div>
+                    </div>
+
+                    <!--División del Frame para Mostrar la Información del Usuario-->
+                    <div class="cargaDatos" id="cargaDatos" style="display:none;">
+                        <div id="contenidoDatos">
+                            <section class="MyProfilePage">
+                                <div class="MyProfileTitle">
+                                    <h2>Tus Datos</h2>
+                                    <i class="material-icons" onclick="closePopUpMyProfile()">cancel</i>
+                                </div>
+                                <div class="FirstRline">
+                                    <h2 class="MyProfileInfo">Nombre de Usuario:</h2>
+                                    <p class="MyProfileData"> <span id="MyUsername"></span> <i class="material-icons" onclick="openPopUpChangeUser()">edit</i></p>
+                                    
+                                    <!--División del Frame para Formulario para cambiar el nombre de usuario-->
+                                    <div class="cargaChangeUser" id="cargaChangeUser" style="display: none;">
+                                        <div id="contenidoChangeUser" class="changes">
+                                            <section class="ChangeUserPage">
+                                                <div class="ChangeUserTitle">
+                                                    <h2>Editar Nombre de Usuario</h2>
+                                                </div>
+                                                
+                                                <form id="ChangeUserForm" class="ChangeUserForm" onsubmit="changeUsername(); return false;">
+
+                                                    <label class="labelChangeUser" for="chusername">Nuevo Nombre de Usuario: </label><br>
+                                                    <input type="text" class="inputChangeUser" id="chusername" name="chusername" required 
+                                                        minlength="3" placeholder="Tu Nombre Completo..."><br>
+                                                    
+                                                    <label class="labelChangeUser" for="chUserpassword">Confirmar con Contraseña: </label><br>
+                                                    <input type="password" id="chUserpassword" name="chUserpassword" placeholder="Contraseña..."
+                                                        pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*\d.*\d)(?=.*[@#$%^&+=-_]).{12}"
+                                                        required><br>
+                                                    
+                                                    <div class="chUserBottons">
+                                                        <button class="changeButtons" type="submit">Editar</button>
+                                                        <button class="changeButtons" type="button" onclick="closePopUpChangeUser()">Cancelar</button>
+                                                    </div>
+                                                </form>
+                                            </section>
+                                        </div>
+                                    </div>
+
+
+                                    <h2 class="MyProfileInfo">Contraseña:</h2>
+                                    <p class="MyProfileData"> <span id="MyPassword"></span> <i class="material-icons" onclick="openPopUpChangePassword()">edit</i></p>
+
+                                    <!--División del Frame para Formulario para cambiar la password-->
+                                    <div class="cargaChangePassword" id="cargaChangePassword" style="display: none;">
+                                        <div id="contenidoChangePassword" class="changes">
+                                            <section class="ChangePasswordPage">
+                                                <div class="ChangePasswordTitle">
+                                                    <h2>Editar Contraseña</h2>
+                                                </div>
+                                                
+                                                <form id="ChangePasswordForm" class="ChangePasswordForm" onsubmit="changePassword(); return false;">
+
+                                                    <label for="oldPassword">Contraseña Anterior: </label><br>
+                                                    <input type="password" id="oldPassword" name="oldPassword" placeholder="Contraseña..."
+                                                        pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*\d.*\d)(?=.*[@#$%^&+=-_]).{12}"
+                                                        required><br>
+
+                                                    <label for="newPassword">Nueva Contraseña: </label><br>
+                                                    <input type="password" id="newPassword" name="newPassword" placeholder="Contraseña..."
+                                                        pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*\d.*\d)(?=.*[@#$%^&+=-_]).{12}"
+                                                        required><br>
+
+                                                    <label for="confirmchPassword">Confirme Nueva Contraseña: </label><br>
+                                                    <input type="password" id="confirmchPassword" name="confirmchPassword" placeholder="Repita la Contraseña..."
+                                                        pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*\d.*\d)(?=.*[@#$%^&+=-_]).{12}"
+                                                        required><br>                                  
+                                                                                                        
+                                                    <div class="chPasswordBottons">
+                                                        <button class="changeButtons" type="submit">Editar</button>
+                                                        <button class="changeButtons" type="button" onclick="closePopUpChangePassword()">Cancelar</button>
+                                                    </div>
+                                                </form>
+                                            </section>
+                                        </div>
+                                    </div>
+
+                                    
+                                    <h2 class="MyProfileInfo">Ciudad:</h2>
+                                    <p class="MyProfileData"> <span id="MyCity"></span> <i class="material-icons" onclick="openPopUpChangeCity()">edit</i></p>
+
+                                    <!--División del Frame para Formulario para cambiar la ciudad-->
+                                    <div class="cargaChangeCity" id="cargaChangeCity" style="display: none;">
+                                        <div id="contenidoChangeCity" class="changes">
+                                            <section class="ChangeCityPage">
+                                                <div class="ChangeCityTitle">
+                                                    <h2>Editar Ciudad</h2>
+                                                </div>
+                                                
+                                                <form id="ChangeCityForm" class="ChangeCityForm" onsubmit="changeCity(); return false;">
+
+                                                    <label class="labelChangeCity" for="chcity">Nueva Ciudad: </label><br>
+                                                    <input type="text" class="inputChangeUser" id="chcity" name="chcity" required 
+                                                        minlength="3" placeholder="Tu Ciudad..."><br>
+                                                    
+                                                    <label class="labelChangeCity" for="chCityPassword">Confirmar con Contraseña: </label><br>
+                                                    <input type="password" id="chCityPassword" name="chCityPassword" placeholder="Contraseña..."
+                                                        pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*\d.*\d)(?=.*[@#$%^&+=-_]).{12}"
+                                                        required><br>
+                                                    
+                                                    <div class="chCityBottons">
+                                                        <button class="changeButtons" type="submit">Editar</button>
+                                                        <button class="changeButtons" type="button" onclick="closePopUpChangeCity()">Cancelar</button>
+                                                    </div>
+                                                </form>
+                                            </section>
+                                        </div>
+                                    </div>
+                                    
+                                
+                                </div>
+                
+                                <div class="SecondRline">
+
+                                    <h2 class="MyProfileInfo">Email:</h2>
+                                    <p class="MyProfileData"> <span id="MyEmail"></span> <i class="material-icons" onclick="openPopUpChangeEmail()">edit</i></p>
+
+                                    <!--División del Frame para Formulario para cambiar el email-->
+                                    <div class="cargaChangeEmail" id="cargaChangeEmail" style="display: none;">
+                                        <div id="contenidoChangeEmail" class="changes">
+                                            <section class="ChangeEmailPage">
+                                                <div class="ChangeEmailTitle">
+                                                    <h2>Editar Email</h2>
+                                                </div>
+                                                
+                                                <form id="ChangeEmailForm" class="ChangeEmailForm" onsubmit="changeEmail(); return false;">
+                                                    
+                                                    <label for="chemail">Nuevo Email: </label><br>
+                                                    <input type="email" class="inputChangeEmail" id="chemail" name="chemail" required placeholder="Tu Correo..."><br>
+                                                                                                       
+                                                    <label class="labelChangeEmail" for="chEmailPassword">Confirmar con Contraseña: </label><br>
+                                                    <input type="password" id="chEmailPassword" name="chEmailPassword" placeholder="Contraseña..."
+                                                        pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*\d.*\d)(?=.*[@#$%^&+=-_]).{12}"
+                                                        required><br>
+                                                    
+                                                    <div class="chEmailBottons">
+                                                        <button class="changeButtons" type="submit">Editar</button>
+                                                        <button class="changeButtons" type="button" onclick="closePopUpChangeEmail()">Cancelar</button>
+                                                    </div>
+                                                </form>
+                                            </section>
+                                        </div>
+                                    </div>
+                                    
+                                    <h2 class="MyProfileInfo">País:</h2>
+                                    <p class="MyProfileData"> <span id="MyCountry"></span> <i class="material-icons" onclick="openPopUpChangeCountry()">edit</i></p>
+                                    
+                                    <!--División del Frame para Formulario para cambiar el país-->
+                                    <div class="cargaChangeCountry" id="cargaChangeCountry" style="display: none;">
+                                        <div id="contenidoChangeCountry" class="changes">
+                                            <section class="ChangeCountryPage">
+                                                <div class="ChangeCountryTitle">
+                                                    <h2>Editar País</h2>
+                                                </div>
+                                                
+                                                <form id="ChangeCountryForm" class="ChangeCountryForm" onsubmit="changeCountry(); return false;">
+
+                                                    <label class="labelChangeCountry" for="chcountry">Nuevo País: </label><br>
+                                                    <input type="text" class="inputChangeCountry" id="chcountry" name="chcountry" required 
+                                                        minlength="3" placeholder="Tu País..."><br>
+                                                    
+                                                    <label class="labelChangeCountry" for="chCountryPassword">Confirmar con Contraseña: </label><br>
+                                                    <input type="password" id="chCountryPassword" name="chCountryPassword" placeholder="Contraseña..."
+                                                        pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*\d.*\d)(?=.*[@#$%^&+=-_]).{12}"
+                                                        required><br>
+                                                    
+                                                    <div class="chCountryBottons">
+                                                        <button class="changeButtons" type="submit">Editar</button>
+                                                        <button class="changeButtons" type="button" onclick="closePopUpChangeCountry()">Cancelar</button>
+                                                    </div>
+                                                </form>
+                                            </section>
+                                        </div>
+                                    </div>
+
+                                </div>
+                            </section>
+                        </div>
+                    </div>
+
+                    <!--Apartado que permite ver todas las cartas del usuario-->
+                    <div class="cargaMyCards" id="cargaMyCards" style="display: none;">
+                        <div id="contenidoMyCards">
+                            <section class="MyCardsPage">
+                                <div class="MyCardsTitle">
+                                    <h2>Mis Cartas</h2>
+                                    <i class="material-icons" onclick="closePopUpMyCards()">cancel</i>
+                                </div>
+                                <div id="infoCards" class="infoCards"></div>
+                            </section>                            
+                        </div>     
+                    </div>
+                    
+                    <!--Apartado que permite ver todos los viajes del usuario-->
+                    <div class="cargaMyPackages" id="cargaMyPackages" style="display: none;">
+                        <div id="contenidoMyPackages">
+                            <section class="MyCardsPage">
+                                <div class="MyCardsTitle">
+                                    <h2>Mis Paquetes de Viaje</h2>
+                                    <i class="material-icons" onclick="closePopUpMyPackages()">cancel</i>
+                                </div>
+                                <div id="infoMyPackages" class="infoPackages"></div>
+                            </section>                            
+                        </div>     
+                    </div>
+
+
+                <!--Apartado para el desarrollo del test de Bondad-->
+                <div id="testDeBondad">
+                    <div id="testDeBondadContent">
+                        <div id="testBondadTitle">
+                            <h2>Test de Bondad</h2>
+                            <i class="material-icons" onclick="closePopUpTestDeBondad()">cancel</i>
+                        </div>
+
+                        <form onsubmit="testResults(); return false" id="testform">
+                            <div class="test">
+                                <div>
+                                    <label class="labelBondad" for="generoso"> ¿Has sido generoso? </label>
+                                    <input type="number" id="generoso" min="0" max="4" required>
+                                </div>
+                            </div>
+                            <div class="test">
+                                <div>
+                                    <label class="labelBondad" for="ayuda"> ¿Has ayudado a los demás? </label>
+                                    <input type="number" id="ayuda" min="0" max="4" required>
+                                </div>
+
+                            </div>
+                                <div class="test">
+                                <div>
+                                    <label class="labelBondad" for="pelea"> ¿Te has peleado? </label>
+                                    <input type="number" id="pelea" min="0" max="4" required>
+                                </div>
+
+                            </div>
+                            <div class="test">
+                                <div>
+                                    <label class="labelBondad" for="obediencia"> ¿Has hecho caso a tus padres? </label>
+                                    <input type="number"  id="obediencia" min="0" max="4" required>
+                                </div>
+                            </div>
+
+                            <button id="sendTestBondad">Evaluar</button>
+
+                        </form>
+                        <div id="goodKid">
+                            <p>¡Te has portado genial este año!</p>
+                            <p>Toma tus regalos</p>
+                            <img src="images/regalos.png" alt="regalosbuenos" id="regalos">
+                        </div>
+                        <div id="badkid">
+                            <p>Este año no has sido muy bueno</p>
+                            <p>El año que viene tienes que portarte mejor</p>
+                            <img src="images/coal.png" alt="regalocoal" id="coal">
+                        </div>
+                    </div>
+                </div>
+
+            </nav>
+        </header>
+
+
+        <section id="Page1" class="Page1"> <!--Inicio de la Primera Pagina-->
+
+            <header class="PrincipalTitle">
+                <h1>Sigue a Papá Noel</h1>
+
+                <h3>
+                    <span id="dias"> </span> Días 
+                    <span id="horas"> </span> h
+                    <span id="minutos"> </span> min 
+                    <span id="segundos"> </span> seg
+                </h3>
+
+                <button>Empezar</button>
+            </header>
+
+        </section> <!--Fin de la Primera Pagina-->
+        
+        <div class="PageDivisor"></div>
+
+        <section id="Page2" class="Page2"> <!--Inicio de la Segunda Pagina-->
+            <div class="SantaTitle">
+                <h2>Papá Noel</h2>
+            </div>
+
+            <div class="SecondSection">
+                <div class="SantasImage">
+                    <img src="images/SantaPNG1.png" alt="Papá Noel">
+                </div>
+
+                <div class="SantaText"> 
+                    <p style="font-family:Verdana, Geneva, Tahoma, sans-serif;">
+                        Santa Claus, o Papá Noel, es un señor muy amable y alegre que vive en un 
+                        lugar muy, muy lejano y frío, llamado el Polo Norte. 
+                        Tiene una larga barba blanca y siempre usa un traje rojo con un cinturón negro. 
+                        A Santa le encanta hacer felices a los niños, y su trabajo más importante 
+                        es traer regalos en Navidad.<br><br>
+
+                        Durante todo el año, Santa tiene una fábrica muy grande donde muchos ayudantes, 
+                        llamados elfos, hacen juguetes. Él también tiene unos renos mágicos que vuelan. 
+                        La noche antes de Navidad, Santa viaja en su trineo por todo el mundo, tirado 
+                        por los renos, para llevar regalos a los niños que se han portado bien.<br><br>
+
+                        Santa entra a las casas por la chimenea (o por la puerta si no hay chimenea), y 
+                        deja los regalos debajo del árbol de Navidad o en medias colgadas. 
+                        ¡Pero nunca lo ves porque lo hace todo en secreto mientras duermes! 
+                        Es muy rápido y mágico.<br><br>
+
+                        Santa es muy bueno y le encanta ver a todos felices y con una sonrisa. 
+                        Además, le encanta cuando le dejan galletas y leche para comer cuando pasa 
+                        por las casas.<br>
+                    </p>
+                </div>
+
+            </div>
+        </section> <!--Fin de la Segunda Pagina-->
+
+        <div class="PageDivisor"></div>
+
+        <section id="Page3" class="Page3"> <!--Inicio de la Tercera Pagina-->
+
+            <header class="MailTitle"> <!--Titulo de la pagina de las cartas-->
+                <h2>Las Cartas</h2>
+            </header>
+
+            <!--Hacemos seis divisiones en este punto, una para cada carta-->
+
+            <div class="PrincipalMail">
+                
+                <div class="Mail">
+                    <h3>Carta 1</h3>
+                    <div class="FirstBlock">
+                        <img src="images/P1-transformed.png" alt="">
+                        <div class="SecondBlock">
+                            <h4 style="font-family:Verdana, Geneva, Tahoma, sans-serif;">Ana Carlota Picón</h4>
+                            <h5 style="font-family:Verdana, Geneva, Tahoma, sans-serif;">Caracas</h5>
+                            <h5 style="font-family:Verdana, Geneva, Tahoma, sans-serif;">Venezuela</h5>
+                            <p style="font-family:Verdana, Geneva, Tahoma, sans-serif;">
+                                <b>Querido Papá Noel</b><br>
+                                Este año he trabajado mucho y he intentado dar lo mejor de mí en todo lo que hago. 
+                                Me encantaría pedirte algunos detalles especiales para mí, 
+                                pero lo que más deseo es que mis seres queridos tengan salud y felicidad.
+                                Gracias por la magia que traes cada Navidad y 
+                                por recordarnos lo importante que es compartir y estar juntos.<br><br>
+                                Te dejo galletas y un abrazo desde aquí.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+    
+                <div class="Mail">
+                    <h3>Carta 2</h3>
+                    <div class="FirstBlock">
+                        <img src="images/P2-transformed.png" alt="">
+                        <div class="SecondBlock">
+                            <h4 style="font-family:Verdana, Geneva, Tahoma, sans-serif;">María Luisa Sánchez</h4>
+                            <h5 style="font-family:Verdana, Geneva, Tahoma, sans-serif;">Santo Domingo</h5>
+                            <h5 style="font-family:Verdana, Geneva, Tahoma, sans-serif;">República Dominicana</h5>
+                            <p style="font-family:Verdana, Geneva, Tahoma, sans-serif;">
+                                <b>Querido Papá Noel</b><br>
+                                Espero que estés bien y que este año no haya sido demasiado agitado para ti y 
+                                tus ayudantes. 
+                                Quiero decirte que he estado trabajando duro para ser una mejor persona y 
+                                hacer sonreír a quienes me rodean.<br><br>
+                                Este año, más que regalos, me gustaría pedir paz, salud y 
+                                momentos felices para mi familia y amigos. 
+                                Aunque, si queda espacio en tu trineo, 
+                                no me vendría mal algo especial para disfrutar esta Navidad.<br><br>
+                                Gracias por mantener viva la magia y la ilusión cada año. 
+                                ¡Te esperamos con mucha alegría
+                            </p>
+                        </div>
+                    </div>
+                </div>
+    
+                <div class="Mail">
+                    <h3>Carta 3</h3>
+                    <div class="FirstBlock">
+                        <img src="images/P4-transformed.png" alt="">
+                        <div class="SecondBlock">
+                            <h4 style="font-family:Verdana, Geneva, Tahoma, sans-serif;">Andrés Duarte</h4>
+                            <h5 style="font-family:Verdana, Geneva, Tahoma, sans-serif;">Miami</h5>
+                            <h5 style="font-family:Verdana, Geneva, Tahoma, sans-serif;">Estados Unidos</h5>
+                            <p style="font-family:Verdana, Geneva, Tahoma, sans-serif;">
+                                <b>Querido Papá Noel</b><br>
+                                ¡Hola! Espero que tú y los renos estén bien. 
+                                Este año he intentado portarme bien y ayudar a mis papás en casa. 
+                                Me he esforzado mucho en la escuela también.<br><br>
+                                Me gustaría pedirte algunos juguetes que me gustan mucho, 
+                                pero lo que más quiero es que todos estén felices y 
+                                que no falte la magia de la Navidad en mi casa.<br><br>
+                                Voy a dejarte galletas y leche, y zanahorias para los renos. ¡Espero que te gusten!
+                            </p>
+                        </div>
+                    </div>
+                </div>
+    
+                <div class="Mail">
+                    <h3>Carta 4</h3>
+                    <div class="FirstBlock">
+                        <img src="images/P8-transformed.png" alt="">
+                        <div class="SecondBlock">
+                            <h4 style="font-family:Verdana, Geneva, Tahoma, sans-serif;">José Andrés Carrasquero</h4>
+                            <h5 style="font-family:Verdana, Geneva, Tahoma, sans-serif;">Madrid</h5>
+                            <h5 style="font-family:Verdana, Geneva, Tahoma, sans-serif;">España</h5>
+                            <p style="font-family:Verdana, Geneva, Tahoma, sans-serif;">
+                                <b>Querido Papá Noel</b><br>
+                                Este año ha sido un reto, pero también ha traído aprendizajes importantes. 
+                                Hemos trabajado duro en la empresa para superar obstáculos y seguir creciendo, 
+                                y estoy agradecido por todo lo que hemos logrado.<br><br>
+                                Para esta Navidad, no te voy a pedir regalos materiales. 
+                                En cambio, desearía salud, bienestar y oportunidades para seguir avanzando, 
+                                tanto en lo personal como en lo profesional. 
+                                Que el próximo año traiga estabilidad y éxito para todos.<br><br>
+                                Gracias por recordarnos la importancia de la generosidad y la magia de compartir.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="Mail">
+                    <h3>Carta 5</h3>
+                    <div class="FirstBlock">
+                        <img src="images/P12-transformed.png" alt="">
+                        <div class="SecondBlock">
+                            <h4 style="font-family:Verdana, Geneva, Tahoma, sans-serif;">Jaime Da Silva</h4>
+                            <h5 style="font-family:Verdana, Geneva, Tahoma, sans-serif;">Lisboa</h5>
+                            <h5 style="font-family:Verdana, Geneva, Tahoma, sans-serif;">Portugal</h5>
+                            <p style="font-family:Verdana, Geneva, Tahoma, sans-serif;">
+                                <b>Querido Papá Noel</b><br>
+                                Este año ha sido intenso, lleno de entrenamientos y competencias. 
+                                Me he esforzado al máximo para mejorar en mi deporte, y aunque he tenido éxitos, 
+                                también he aprendido mucho de los desafíos.<br><br>
+                                Para esta Navidad, no te pido nada material. 
+                                Solo deseo salud, fuerza y motivación para seguir adelante y alcanzar mis metas. 
+                                También me gustaría que mis compañeros de equipo y entrenadores 
+                                sigan creciendo conmigo.<br><br>
+                                Gracias por mantener viva la ilusión y por recordarnos la 
+                                importancia de la dedicación y el esfuerzo.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="Mail">
+                    <h3>Carta 6</h3>
+                    <div class="FirstBlock">
+                        <img src="images/P4-transformed.png" alt="">
+                        <div class="SecondBlock">
+                            <h4 style="font-family:Verdana, Geneva, Tahoma, sans-serif;">Linda Semidey</h4>
+                            <h5 style="font-family:Verdana, Geneva, Tahoma, sans-serif;">Caracas</h5>
+                            <h5 style="font-family:Verdana, Geneva, Tahoma, sans-serif;">Venezuela</h5>
+                            <p style="font-family:Verdana, Geneva, Tahoma, sans-serif;">
+                                <b>Querido Papá Noel</b><br>
+                                ¡Hola! Espero que estés muy bien en el Polo Norte y que los renos y 
+                                los duendes estén listos para la Navidad. 
+                                Este año he sido buena, he ayudado en casa y 
+                                he tratado de ser amable con todos mis amigos.<br><br>
+                                Me gustaría pedirte algunos juguetes que me encantan, 
+                                pero también deseo que mi familia y mis amigos estén felices 
+                                y que la Navidad sea mágica para todos.<br><br>
+                                Te dejaré galletas y leche cuando vengas. ¡Cuida mucho a los renos!
+                            </p>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
+        </section> <!--Fin de la Tercera Pagina-->
+
+        <div class="PageDivisor"></div>
+
+        <section id="Page4" class="Page4"> <!--Inicio de la Cuarta Pagina-->
+
+            <header class="MyMailTitle"> <!--Titulo de la pagina con el formulario para enviar cartas-->
+                <h2>Envía Tu Carta</h2>
+            </header>
+
+            <form id="MailForm" class="MailForm" onsubmit="sendLetter(); return false;">
+                <div>
+                    <label for="nombre">Nombre: </label>
+                    <input type="text" class="inputCform" id="nombre" name="nombre" placeholder="Tu Nombre Completo..." required>
+                </div>
+                <div>
+                    <label for="ciudad">Ciudad: </label>
+                    <input type="text" class="inputCform" id="ciudad" name="ciudad" placeholder="Ciudad en la que vives..." required>
+                </div>
+
+                <div>
+                    <label for="correo">Email: </label>
+                    <input type="email" class="inputCform" id="correo" name="correo" placeholder="Tu Correo..." required>
+                </div>
+                <div>
+                    <label for="pais">País: </label>
+                    <input type="text" class="inputCform" id="pais" name="pais" placeholder="País en el que vives..." required>
+                </div>
+
+                <div id="letterText">
+                    <label for = "cartaa">Escribe tu Carta: </label>
+                    <textarea name="message" rows="4" cols="50" placeholder="Querido Santa..." required id = "cartaa"></textarea>
+                </div>
+                <button type="submit" id="sendLetterButton">Enviar</button>
+
+            </form>
+
+        </section> <!--Fin de la Cuarta Pagina-->
+
+        <div class="PageDivisor"></div>
+
+        <section id="Page5"> <!-- Inicio de la Quinta Pagina -->
+            <!--class="pn_write" -->
+            <div>
+                <h2 id="hh2">¡Juega! </h2> <!-- Título para el apartado de juegos -->
+            </div>
+
+            <div id="game">
+                <div id="marcadores">
+                    <div id="opciones_juego">
+                        <div class="option">
+                            <input type="radio" id="juego1" name="game" checked >
+                            <label for="juego1" onclick="juego1()" style="color: black;">Juego 1</label>
+
+                        </div>
+                        <div class="option">
+                            <input type="radio" id="juego2" name="game">
+                            <label for="juego2" onclick="juego2()" style="color: black;">Juego 2</label>
+                        </div>
+                        <div class="option">
+                            <input type="radio" id="juego3" name="game">
+                            <label for="juego3" style="color: black;">Juego 3</label>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="imagesss">
+                    <div id="Imagen1">
+                        <p id="gameScore"></p>
+                        <p id="gameTimer"></p>
+                        <img src="images/white-circle.png" alt="foto_circulo" id="circulo">
+                    </div>
+                    <div id="Imagen2">
+                        <p id="gameScore2"></p>
+                        <p id="gameScore22"></p>
+                        <img id="r" src="images/rojo.png" class="simondicecolores" alt="rojo">
+                        <img id="v" src="images/verde.png" class="simondicecolores" alt="verde">
+                        <img id="a" src="images/azul.png" class="simondicecolores" alt="azul">
+                        <img id="am" src="images/amarillo.png" class="simondicecolores" alt="amarillo">
+                    </div>
+                    <img src="images/juego3.jpg" alt="foto_user" id="Imagen3">
+                </div>
+            </div>
+
+            <div id="marcadoresglobales" style="display: none;">
+                 <h3> Puntuaciones </h3>
+                <div id="marcadores1">
+                    <p> <span id="nombre1"> </span>  <span id="puntaje1">  </span> </p>
+                    <p> <span id="nombre2"> </span>  <span id="puntaje2">  </span> </p>
+                    <p> <span id="nombre3"> </span>  <span id="puntaje3">  </span> </p>
+                </div>
+            </div>
+
+        </section><!--Fin de la Quinta Pagina-->
+
+        <div class="PageDivisor"></div>
+
+        <section id="Page6" class="Page6"> <!--Inicio de la Sexta Página-->
+            <!--
+            <div class="Decoraciones6">
+                <img class="Decoraciones6_1" src="images/Decoración.png" alt="">
+                <img class="Decoraciones6_2" src="images/Decoración.png" alt="">
+                <img class="Decoraciones6_3" src="images/Decoración.png" alt="">
+                <img class="Decoraciones6_4" src="images/Decoración.png" alt="">
+            </div>
+            -->
+            <header class="MyCalendarTitle"> <!--Titulo de la pagina de Calendario de Adviento-->
+                <h1>Calendario de Adviento</h1>
+            </header>
+            <div class = "Calendario">
+                <div class="Dia" onclick="popupAdviento(1)">
+                    <p>01</p>
+                    <img src="images/Calendario_adviento/Dia1.png" alt="">
+                </div>
+                <div class="Dia" onclick="popupAdviento(2)">
+                    <p>02</p>
+                    <img src="images/Calendario_adviento/Dia2.png" alt="">
+                </div>
+                <div class="Dia" onclick="popupAdviento(3)">
+                    <p>03</p>
+                    <img src="images/Calendario_adviento/Dia3.png" alt="">
+                </div>
+                <div class="Dia" onclick="popupAdviento(4)">
+                    <p>04</p>
+                    <img src="images/Calendario_adviento/Dia4.png" alt="">
+                </div>
+                <div class="Dia" onclick="popupAdviento(5)">
+                    <p>05</p>
+                    <img src="images/Calendario_adviento/Dia5.png" alt="">
+                </div>
+                <div class="Dia" onclick="popupAdviento(6)">
+                    <p>06</p>
+                    <img src="images/Calendario_adviento/Dia6.png" alt="">
+                </div>
+                <div class="Dia" onclick="popupAdviento(7)">
+                    <p>07</p>
+                    <img src="images/Calendario_adviento/Dia7.png" alt="">
+                </div>
+                <div class="Dia" onclick="popupAdviento(8)">
+                    <p>08</p>
+                    <img src="images/Calendario_adviento/Dia8.png" alt="">
+                </div>
+                <div class="Dia" onclick="popupAdviento(9)">
+                    <p>09</p>
+                    <img src="images/Calendario_adviento/Dia9.png" alt="">
+                </div>
+                <div class="Dia" onclick="popupAdviento(10)">
+                    <p>10</p>
+                    <img src="images/Calendario_adviento/Dia10.png" alt="">
+                </div>
+                <div class="Dia" onclick="popupAdviento(11)">
+                    <p>11</p>
+                    <img src="images/Calendario_adviento/Dia11.png" alt="">
+                </div>
+                <div class="Dia" onclick="popupAdviento(12)">
+                    <p>12</p>
+                    <img src="images/Calendario_adviento/Dia12.png" alt="">
+                </div>
+                <div class="Dia" onclick="popupAdviento(13)">
+                    <p>13</p>
+                    <img src="images/Calendario_adviento/Dia13.png" alt="">
+                </div>
+                <div class="Dia" onclick="popupAdviento(14)">
+                    <p>14</p>
+                    <img src="images/Calendario_adviento/Dia14.png" alt="">
+                </div>
+                <div class="Dia" onclick="popupAdviento(15)">
+                    <p>15</p>
+                    <img src="images/Calendario_adviento/Dia15.png" alt="">
+                </div>
+                <div class="Dia" onclick="popupAdviento(16)">
+                    <p>16</p>
+                    <img src="images/Calendario_adviento/Dia16.png" alt="">
+                </div>
+                <div class="Dia" onclick="popupAdviento(17)">
+                    <p>17</p>
+                    <img src="images/Calendario_adviento/Dia17.png" alt="">
+                </div>
+                <div class="Dia" onclick="popupAdviento(18)">
+                    <p>18</p>
+                    <img src="images/Calendario_adviento/Dia18.png" alt="">
+                </div>
+                <div class="Dia" onclick="popupAdviento(19)">
+                    <p>19</p>
+                    <img src="images/Calendario_adviento/Dia19.png" alt="">
+                </div>
+                <div class="Dia" onclick="popupAdviento(20)">
+                    <p>20</p>
+                    <img src="images/Calendario_adviento/Dia20.png" alt="">
+                </div>
+                <div class="Dia" onclick="popupAdviento(21)">
+                    <p>21</p>
+                    <img src="images/Calendario_adviento/Dia21.png" alt="">
+                </div>
+                <div class="Dia" onclick="popupAdviento(22)">
+                    <p>22</p>
+                    <img src="images/Calendario_adviento/Dia22.png" alt="">
+                </div>
+                <div class="Dia" onclick="popupAdviento(23)">
+                    <p>23</p>
+                    <img src="images/Calendario_adviento/Dia23.png" alt="">
+                </div>
+                <div class="Dia" onclick="popupAdviento(24)">
+                    <p>24</p>
+                    <img src="images/Calendario_adviento/Dia24.png" alt="">
+                </div>
+                 <div class="Dia_ultimo" onclick="popupAdviento(25)">
+                    <p>25</p>
+                    <img src="images/Calendario_adviento/Dia25.png" alt="">
+                </div>
+            </div>
+            <div class="Frase_del_dia_ventana" id="Frase_del_dia_ventana">
+            </div>
+
+        </section> <!--Fin de la Sexta Pagina-->
+
+        <div class="PageDivisor"></div>
+
+        <section id="Page7" class="Page7"> <!--Inicio de la Septima Pagina-->
+
+            <header class="MyTravelTitle"> <!--Titulo de la pagina de viajes-->
+                <h2>Paquetes de Viajes</h2>
+            </header>
+
+            <!--Hacemos tres divisiones en este punto, una para cada paquete de viaje-->
+
+            <div class="TravelPackages">
+
+                <div class="TravelInfo">
+                    <h3>Paquete 1</h3>
+                    <div class="FirstTravelBlock">
+                        <div class="container">
+                            <div class="mySlides">
+                              <div class="numbertext">1 / 5</div>
+                              <img src="images/Paquetes_de_Viaje/Hotel1.1.jpg" alt = "paquete1" style="width:100%">
+                            </div>
+                          
+                            <div class="mySlides">
+                              <div class="numbertext">2 / 5</div>
+                              <img src="images/Paquetes_de_Viaje/Hotel1.2.jpg" alt = "paquete2" style="width:100%">
+                            </div>
+                          
+                            <div class="mySlides">
+                              <div class="numbertext">3 / 5</div>
+                              <img src="images/Paquetes_de_Viaje/Hotel1.3.jpg" alt = "paquete3" style="width:100%">
+                            </div>
+                              
+                            <div class="mySlides">
+                              <div class="numbertext">4 / 5</div>
+                              <img src="images/Paquetes_de_Viaje/Hotel1.4.jpg" alt = "paquete4" style="width:100%">
+                            </div>
+                          
+                            <div class="mySlides">
+                              <div class="numbertext">5 / 5</div>
+                              <img src="images/Paquetes_de_Viaje/Hotel1.5.jpg" alt = "paquete5" style="width:100%">
+                            </div>
+                              
+                            <a class="prev" onclick="plusSlides(-1)">❮</a>
+                            <a class="next" onclick="plusSlides(1)">❯</a>
+                        </div>
+
+                        <div class="SecondTravelBlock">
+                            <p style="font-family:Verdana, Geneva, Tahoma, sans-serif;">
+                                <b>* 7 días y 6 noches</b> en un cómodo y acojedor hotel 4 estrellas en Laponia, Finlandia.<br>
+                                <b>*</b> Ubicado a 1h de la villa de Papá Noel<br>
+                                <b>*</b> Transporte a la villa incluído<br>
+                                <b>*</b> Capacidad para 4 personas<br>
+                                <b>*</b> Cuenta con dos camas, un baño, calefacción, televisión por cable y WIFI<br>
+                                <b>*</b> Desayuno Incluído<br> 
+                                <b>*</b> No se admiten mascotas<br>
+                                <b>*</b> Traslado hacia y desde el aereopuerto<br>
+                                <b>*</b> No incluye ninguna experiencia con Santa<br>
+                            </p>
+
+                            <button onclick="reservePackage(this)" data-package="Paquete 1">Reservar</button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="TravelInfo">
+                    <h3>Paquete 2</h3>
+                    <div class="FirstTravelBlock">
+                        <div class="container2">
+                            <div class="mySlides2">
+                              <div class="numbertext2">1 / 5</div>
+                              <img src="images/Paquetes_de_Viaje/Hotel2.1.jpg" alt = "paquete1" style="width:100%">
+                            </div>
+                          
+                            <div class="mySlides2">
+                              <div class="numbertext2">2 / 5</div>
+                              <img src="images/Paquetes_de_Viaje/Hotel2.2.jpg" alt = "paquete2" style="width:100%">
+                            </div>
+                          
+                            <div class="mySlides2">
+                              <div class="numbertext2">3 / 5</div>
+                              <img src="images/Paquetes_de_Viaje/Hotel2.3.jpg" alt = "paquete3" style="width:100%">
+                            </div>
+                              
+                            <div class="mySlides2">
+                              <div class="numbertext2">4 / 5</div>
+                              <img src="images/Paquetes_de_Viaje/Hotel2.4.jpg" alt = "paquete4" style="width:100%">
+                            </div>
+                          
+                            <div class="mySlides2">
+                              <div class="numbertext2">5 / 5</div>
+                              <img src="images/Paquetes_de_Viaje/Hotel2.5.jpg" alt = "paquete5" style="width:100%">
+                            </div>
+                              
+                            <a class="prev2" onclick="plusSlides2(-1)">❮</a>
+                            <a class="next2" onclick="plusSlides2(1)">❯</a>
+                        </div>
+
+                        <div class="SecondTravelBlock">
+                            <p style="font-family:Verdana, Geneva, Tahoma, sans-serif;">
+                                <b>* 7 días y 6 noches</b> en un cómoda y acojedora cabaña en Laponia, Finlandia.<br>
+                                <b>*</b> Ubicada dentro de la villa de Papá Noel<br>
+                                <b>*</b> Capacidad para 6 personas<br>
+                                <b>*</b> Cuenta con tres habitaciones, dos baños, calefacción, televisión por cable y WIFI<br>
+                                <b>*</b> El Desayuno no viene incluído<br>
+                                <b>*</b> No se admiten mascotas<br> 
+                                <b>*</b> Traslado hacia y desde el aereopuerto<br>
+                                <b>*</b> Incluye una experiencia en el taller de Santa de un día<br>
+                            </p>
+
+                            <button onclick="reservePackage(this)" data-package="Paquete 2">Reservar</button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="TravelInfo">
+                    <h3>Paquete 3</h3>
+                    <div class="FirstTravelBlock">
+                        <div class="container3">
+                            <div class="mySlides3">
+                                <div class="numbertext3">1 / 5</div>
+                                <img class="slide" src="images/Paquetes_de_Viaje/Hotel3.1.jpg" alt = "paquete1" style="width:100%">
+                            </div>
+                            
+                            <div class="mySlides3">
+                                <div class="numbertext3">2 / 5</div>
+                                <img src="images/Paquetes_de_Viaje/Hotel3.2.jpg" alt = "paquete2" style="width:100%">
+                            </div>
+                            
+                            <div class="mySlides3">
+                                <div class="numbertext3">3 / 5</div>
+                                <img src="images/Paquetes_de_Viaje/Hotel3.3.jpg" alt = "paquete3" style="width:100%">
+                            </div>
+                                
+                            <div class="mySlides3">
+                                <div class="numbertext3">4 / 5</div>
+                                <img src="images/Paquetes_de_Viaje/Hotel3.4.jpg" alt = "paquete4" style="width:100%">
+                            </div>
+                            
+                            <div class="mySlides3">
+                                <div class="numbertext3">5 / 5</div>
+                                <img src="images/Paquetes_de_Viaje/Hotel3.5.jpg" alt = "paquete5" style="width:100%">
+                            </div>
+                                
+                            <a class="prev3" onclick="plusSlides3(-1)">❮</a>
+                            <a class="next3" onclick="plusSlides3(1)">❯</a>
+                        </div>
+
+                        <div class="SecondTravelBlock">
+                            <p style="font-family:Verdana, Geneva, Tahoma, sans-serif;">
+                                <b>* 7 días y 6 noches</b> en un impresionante alojamiento conocido como los iglús de Laponia, Finlandia.<br>
+                                <b>*</b> Ubicado a 5 minutos en trineo de la villa<br>
+                                <b>*</b> Traslado en trineo a la villa incluído<br>
+                                <b>*</b> Capacidad para 4 personas<br>
+                                <b>*</b> Cuenta con dos camas, baño, calefacción y WIFI<br>
+                                <b>*</b> Desayuno Incluído <br> 
+                                <b>*</b> Traslado hacia y desde el aereopuerto<br>
+                                <b>*</b> Incluye una experiencia con Santa en su trineo y junto a sus duendes<br>
+                            </p>
+
+                            <button onclick="reservePackage(this)" data-package="Paquete 3">Reservar</button>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+
+            <!--División del Frame para Formulario de Registro de Paquetes-->
+            <div class="cargaPaquete" id="cargaPaquete" style="display:none;">
+                <div id="contenidoPaquete">
+                    <section class="PlanificatorTravelPage">
+                        <div class="PlanificatorTravelTitle">
+                            <h2>Planificador de Viajes</h2>
+                        </div>
+            
+                        <form id="TravelForm" onsubmit="validateParameters() && saveTravelData();">
+                            <input type="hidden" id="selectedPackage" name="selectedPackage">
+                            <div id="travelInputs">
+                                <div>
+                                <label for="phoneTravel">Teléfono: </label>
+                                <input type="tel" id="phoneTravel" name="phoneTravel" placeholder="Ej. +34 123 456 789" required>
+                                </div>
+                                <div>
+                                    <label for="fechaInicioTravel">Fecha de Inicio:</label>
+                                    <input type="date" id="fechaInicioTravel" name="fechaInicioTravel" required>
+                                </div>
+                                <div>
+                                    <label for="cardNumber">Número de Tarjeta:</label>
+                                    <input type="text" id="cardNumber" name="cardNumber" maxlength="19" placeholder="1234 5678 9012 3456" required
+                                        onchange="validateCard(this)">
+                                </div>
+                                <div>
+                                    <label for="cardFecha">Fecha de Vencimiento:</label>
+                                    <input type="month" id="cardFecha" name="cardFecha" required>
+                                </div>
+
+                                <div>
+                                    <label for="emailTravel">Email: </label>
+                                    <input type="email" class="inputRform" id="emailTravel" name="emailTravel" required placeholder="Tu Correo...">
+                                </div>
+                                <div>
+                                    <label for="fechaFinTravel">Fecha Fin:</label>
+                                    <input type="date" id="fechaFinTravel" name="fechaFinTravel" required>
+                                </div>
+                                <div>
+                                    <label for="cardName">Nombre en la Tarjeta:</label>
+                                    <input type="text" id="cardName" name="cardName" placeholder="Como aparece en la tarjeta" required>
+                                </div>
+                                <div>
+                                    <label for="cvv">CVV:</label>
+                                    <input type="password" id="cvv" name="cvv" maxlength="3" placeholder="123" required
+                                        oninput="this.value = this.value.replace(/[^0-9]/g, '')">
+                                </div>
+                                <div>
+                                    <label for="passwordTravel">Contraseña:</label>
+                                    <input type="password" id="passwordTravel" name="passwordTravel" placeholder="Contraseña..."
+                                        title="La contraseña debe tener 12 caracteres, y al menos: 1 letra minúscula, 1 mayúscula, 2 números y un símbolo especial"
+                                        pattern="^(?=(?:[^0-9]*[0-9]){2})(?=.*[a-z])(?=.*[A-Z])(?=.*[\W_]).{12}$"
+                                        required>
+                                </div>
+                            </div>
+
+                                <!--<input type="submit" value="Aceptar">-->
+                            <div class="rBottons">
+                                <button type="button" onclick="clearTravelForm()">Limpiar Campos</button>
+                                <button type="submit">Reservar</button>
+                                <button type="button" onclick="closeTravelForm()">Cancelar</button>
+                            </div>
+
+                        </form>
+                    </section>
+                </div>
+            </div>
+        </section> <!--Fin de la Septima Pagina-->
+
+
+        <div class="PageDivisor"></div>
+
+        <footer class="footer"> <!--Inicio del Pie de Pagina-->
+
+            <div class="FirstFooterPart">
+                <div class="logoFooter"> <!--Logo de la pagina-->
+                    <img src="images/Santa1-transformed.png" alt="">
+                </div>
+    
+                <nav class="SocialMedia">
+                    <a href="https://www.facebook.com" class="fa fa-facebook"> . </a>
+                    <a href="https://x.com" class="fa fa-twitter"> . </a>
+                    <a href="https://www.instagram.com" class="fa fa-instagram"> . </a>
+                    <a href="https://www.youtube.com" class="fa fa-youtube"> . </a>
+                    <a href="https://es.pinterest.com" class="fa fa-pinterest"> . </a>
+                    <a href="https://www.google.com" class="fa fa-google"> . </a>
+                </nav>
+            </div>
+
+            <div class="SecondFooterPart">
+                <nav class="WebPolitics">
+                    <a href="https://www.aepd.es/politica-de-privacidad-y-aviso-legal">Política de Privacidad</a>
+                    <a href="https://protecciondatos-lopd.com/empresas/politica-de-cookies">Cookies</a>
+                </nav>
+
+                <div class="Contact">
+                    <h2 style="font-family:Verdana, Geneva, Tahoma, sans-serif;">Formas de Contactarnos:</h2>
+                    <a href="tel:+34%20916%20246%20000" class="telefono">Llama al +34 916 246 000</a>
+                    <a href="mailto:100477706@alumnos.uc3m.es" class="email">Envíanos un correo</a>
+                    <a href="https://www.google.com/maps/place/Universidad+Carlos+III+de+Madrid+%7C+Campus+de+Legan%C3%A9s/@40.3324408,-3.7676849,1017m/data=!3m2!1e3!4b1!4m6!3m5!1s0xd41898b1cc06b5b:0xaf0cadd098b516f8!8m2!3d40.3324367!4d-3.76511!16s%2Fm%2F0cvhzsb?authuser=0&entry=ttu&g_ep=EgoyMDI0MDkyNS4wIKXMDSoASAFQAw%3D%3D" 
+                    class="location">Ubícanos en el Mapa con este enlace</a>
+                </div>
+            </div>
+        </footer>
+
+    </body>
+</html>

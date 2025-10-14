@@ -1,0 +1,3360 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html{
+    font-size: 14px;
+}
+
+body{
+    background-color: rgb(133, 20, 20);
+}
+
+/*Esto es para el menu principal de la pagina*/
+.Encabezado {
+    background-color: rgb(196, 7, 7);
+    background-image: linear-gradient(to bottom right, rgb(255, 4, 4), rgb(153, 20, 20), rgb(144, 107, 107));
+    align-items: center;
+    display: flex;
+    justify-content: space-between;
+    grid-template-columns: 20% 80%;
+    width: 100%;
+    height: fit-content;
+}
+
+.MenuPrincipal{
+    width: fit-content;
+    display: flex;
+    justify-content: right;
+    align-items: center;
+    padding: 1rem 0;
+}
+
+.MenuPrincipal a {
+    position: relative;
+    color: #f2f2f2;
+    text-align: center;
+    text-decoration: none;
+    font-family: 'Lily Script One', serif;
+    font-style: italic;
+    font-weight: bold;
+    font-size: 1.14rem;
+    padding: 0.71rem 1.13rem 0.71rem 1.14rem;
+}
+
+.MenuPrincipal a::after {
+    content: ''; 
+    position: absolute; 
+    top: 0;
+    right: -6%;
+    height: 100%; 
+    width: 0.071rem; 
+    background-color: #ffffff; 
+}
+
+.MenuPrincipal a:hover, .MenuPrincipal a.active {
+    border-radius: 20px;
+    background-color: #ffffff;
+    color: black;
+}
+
+
+button {
+    background-color: transparent;
+    border: 2px solid #ffffff;
+    padding: 0.57rem 1rem;
+    color: #ffffff;
+    font-family: 'Lily Script One', serif;
+    font-size: 1.14rem;
+    cursor: pointer;
+    border-radius: 0.4rem;
+    transition: background-color 0.3s;
+    margin-left: 0.71rem;
+}
+
+.MenuPrincipal button:hover {
+    background-color: #000000;
+}
+
+.logo{
+    width: fit-content;
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+}
+.logo img{
+    width: 10vw;
+    max-width: 150px;
+}
+#LogInBotton{
+    display: none;
+}
+#RegisterBotton{
+    display: none;
+}
+
+/*****************************/
+/*Carga del Frame de Registro*/
+#cargaRegistro {
+    display: none;
+    position: fixed;
+    z-index: 998;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.8); 
+}
+
+#contenidoRegistro {
+    display: none;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    z-index: 999;
+    transform: translate(-50%, -50%);
+    border: 0.3rem solid #000000;
+}
+
+
+/*Contenido del Frame de Registro*/
+.RegisterPage{
+    background-color: rgb(133, 20, 20);
+    width: 79.3vw;
+    height: fit-content;
+    padding: 30px;
+    overflow: auto;
+}
+
+.RegisterTitle{
+    font-size: 2rem;
+    width: auto;
+    display: grid;
+    justify-content: center;
+    padding: 1rem;
+    font-family: 'Lily Script One', serif;
+    color:  rgb(255, 255, 255);
+}
+
+.RegisterTitle h2{
+    font-style: italic;
+    font-weight: bold;
+    text-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+}
+
+#RegisterForm{
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+}
+
+input{
+    width: 30vw;
+    padding: 0.5rem 0.5rem;
+    margin: 0 3rem 0.4rem;
+    box-sizing: border-box;
+    background-color: rgb(133, 20, 20);
+    border: 0.3rem solid red;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+    border-radius: 0.7rem;
+    color:#757070;
+    font-weight: bold;
+    -webkit-transition: 0.3s;
+    transition: 0.5s;
+    outline: none;
+}
+
+.inputRform:focus{
+  border: 0.3rem solid #000000;
+  background-color: rgb(255, 0, 0);
+  color:#ffffff;
+  font-weight: bold;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.7);
+}
+
+.inputRform:focus::placeholder {
+    color: transparent;
+}
+
+input[type=password]:focus {
+  border: 0.3rem solid #000000;
+  background-color: rgb(255, 0, 0);
+  color:#ffffff;
+  font-weight: bold;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.7);
+}
+
+input[type=password]:focus::placeholder {
+    color: transparent;
+}
+
+select {
+    width: 30vw;
+    padding: 0.5rem 0.5rem;
+    font-size: 1rem;
+    margin: 0.8rem 3rem 0.4rem;
+    border: 0.3rem solid red;
+    border-radius: 0.7rem;
+    background-color: rgb(133, 20, 20);
+    color:#ffffff;
+    transition: border-color 0.3s ease;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+}
+
+select:focus {
+    outline: none;
+    border: 0.3rem solid #000000;
+}
+
+option {
+    padding: 0.5rem 0.5rem;
+    background-color: rgb(255, 0, 0);
+    color: #ffffff;
+}
+
+select:hover {
+    border: 0.3rem solid #000000;
+    background-color: rgb(255, 0, 0);
+}
+
+
+input[type=number]:focus {
+  border: 0.3rem solid #000000;
+  background-color: rgb(255, 0, 0);
+  color:#ffffff;
+  font-weight: bold;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.7);
+}
+
+input[type=number]:focus::placeholder {
+    color: transparent;
+}
+
+input[type=number]::-webkit-inner-spin-button{
+    -webkit-appearance: none;
+    margin: 0;
+}
+input[type=number]::-webkit-outer-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+
+.rBottons{
+    display: flex;
+    grid-column: span 2;
+    align-items: center;
+}
+
+.rBottons button {
+    background-color: #000000;
+    border: 2px solid #ffffff;
+    padding: 0.57rem 1rem;
+    color: #ffffff;
+    font-family: 'Lily Script One', serif;
+    font-size: 1.5rem;
+    cursor: pointer;
+    border-radius: 0.4rem;
+    transition: background-color 0.3s;
+    margin-top: 2rem;
+    width: 28%;
+    margin-left: 3rem;
+    margin-bottom: 2rem;
+}
+
+.rBottons button:hover {
+    background-color: #ffffff;
+    border: 2px solid #000000;
+    color: #000000
+}
+
+.FirstRline{
+    float: left;
+    display: block;
+    width: 50%;
+}
+
+.SecondRline{
+    float: left;
+    display: block;
+    width: 50%;
+}
+
+.FinishRline{
+    float: left;
+    width: 100%;
+}
+
+/***************************/
+/*Carga del Frame de Log In*/
+#cargaLogIn {
+    display: flex;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.8); 
+    justify-content: center;
+}
+
+#contenidoLogIn {
+    display: none;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    width: 40vw;
+    height: fit-content;
+    z-index: 999;
+    transform: translate(-50%, -50%);
+    border: 0.3rem solid #000000;
+    justify-content: center;
+}
+
+
+/*Contenido del Frame de Log In*/
+.LogInPage{
+    background-color: rgb(133, 20, 20);
+    width: 39.4vw;
+    height: fit-content;
+    padding: 30px;
+    overflow: auto;
+}
+
+.LogInTitle{
+    font-size: 3rem;
+    width: auto;
+    display: grid;
+    justify-content: center;
+    padding: 1rem;
+    font-family: 'Lily Script One', serif;
+    color:  rgb(255, 255, 255);
+}
+
+.LogInTitle h2{
+    font-style: italic;
+    font-weight: bold;
+    text-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+}
+
+.LogInForm{
+    align-items: center;
+    align-content: center;
+    justify-content: center;
+    justify-items: center;
+    width: auto;
+}
+
+
+.inputLIform:focus{
+  border: 0.3rem solid #000000;
+  background-color: rgb(255, 0, 0);
+  color:#ffffff;
+  font-weight: bold;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.7);
+}
+
+.inputLIform:focus::placeholder {
+    color: transparent;
+}
+
+
+.LogInForm input[type=password]:focus {
+  border: 0.3rem solid #000000;
+  background-color: rgb(255, 0, 0);
+  color:#ffffff;
+  font-weight: bold;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.7);
+}
+
+.LogInForm input[type=password]:focus::placeholder {
+    color: transparent;
+}
+
+.labelLogIn{
+    font-size: 2rem;
+    font-family: 'Lily Script One', serif;
+    width: 25vw;
+    display: grid;
+    justify-content: center;
+    margin-top: 0.5rem;
+    margin-bottom: 0.2rem;
+    color: rgb(255, 255, 255);
+    font-style: italic;
+    font-weight: bold;
+    text-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+}
+
+.liBottons{
+    display: flex;
+}
+
+.liBottons button {
+    background-color: #000000;
+    border: 2px solid #ffffff;
+    padding: 0.57rem 1rem;
+    color: #ffffff;
+    font-family: 'Lily Script One', serif;
+    font-size: 1.5rem;
+    cursor: pointer;
+    border-radius: 0.4rem;
+    transition: background-color 0.3s;
+    width: fit-content;
+    margin-top: 10% ;
+}
+
+.liBottons button:hover {
+    background-color: #ffffff;
+    border: 2px solid #000000;
+    color: #000000
+}
+
+/************************************/
+/*Contenido del Menu de cada usuario*/
+
+.MyMenu button:hover {
+    background-color: #000000;
+}
+
+.DropDown{
+    display: none;
+    position: absolute;
+    background-color: rgb(255, 0, 0);
+    min-width: 7rem;
+    box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);
+    z-index: 1;
+    border-radius: 0.4rem;
+    right: 10px;
+}
+
+/****************************************/
+/*Carga del Frame de la Data del Usuario*/
+#cargaDatos {
+    display: none;
+    position: fixed;
+    z-index: 998;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.8); 
+}
+
+#contenidoDatos {
+    display: none;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    width: 80vw;
+    height: 80vh;
+    z-index: 999;
+    transform: translate(-50%, -50%);
+    border: 0.3rem solid #000000;
+}
+
+
+/*Contenido del Frame de la Data del Usuario*/
+.MyProfilePage{
+    background-color: rgb(133, 20, 20);
+    width: 100%;
+    height: 78.8vh;
+    overflow: auto;
+}
+
+.MyProfileTitle{
+    font-size: 3rem;
+    width: auto;
+    display: flex;
+    margin-left: 25%;
+    padding: 1rem;
+    font-family: 'Lily Script One', serif;
+    color:  rgb(255, 255, 255);
+}
+
+.MyProfileTitle h2{
+    font-style: italic;
+    font-weight: bold;
+    text-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+}
+
+.MyProfileTitle i {
+    font-size: 3rem;
+    margin-left: auto;
+    color: white;
+    cursor: pointer;
+    transition: color 0.3s;
+}
+
+.MyProfileTitle i:hover {
+    color: #000000
+}
+
+.MyProfileInfo{
+    font-size: 2rem;
+    width: auto;
+    display: flex;
+    padding: 1rem;
+    text-decoration: underline;
+    font-family: 'Lily Script One', serif;
+    color:  rgb(255, 255, 255);
+}
+
+.MyProfileInfo h2{
+    font-style: italic;
+    font-weight: bold;
+    text-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+}
+
+.MyProfileData{
+    font-size: 1.5rem;
+    width: auto;
+    display: flex;
+    padding: 1rem;
+    font-family: 'Verdana', serif;
+    color:  rgb(255, 255, 255);
+    font-style: italic;
+    font-weight: bold;
+    text-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+}
+
+.material-icons{
+    font-size: 1.5rem;
+    margin-left: 1rem;
+    cursor: pointer;
+    transition: color 0.3s;
+}
+
+.material-icons:hover{
+    color:#000000
+}
+
+
+/*Carga del Frame cuando el usuario cambia username*/
+#cargaChangeUser {
+    display: flex;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.8); 
+    justify-content: center;
+}
+.changes{
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    width: 40vw;
+    height: 70vh;
+    z-index: 999;
+    transform: translate(-50%, -50%);
+    border: 0.3rem solid #000000;
+    justify-content: center;
+}
+#contenidoChangeUser {
+    display: none;
+}
+
+/*Contenido del Frame de cuando el usuario cambia username*/
+.ChangeUserPage{
+    background-color: rgb(133, 20, 20);
+    width: 39.4vw;
+    height: 68.7vh;
+    overflow: auto;
+}
+
+.ChangeUserTitle{
+    font-size: 2.5rem;
+    width: auto;
+    display: flex;
+    padding: 1rem;
+    font-family: 'Lily Script One', serif;
+    color:  rgb(255, 255, 255);
+}
+
+.ChangeUserTitle h2{
+    font-style: italic;
+    font-weight: bold;
+    text-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+}
+
+.ChangeUserForm{
+    width: auto;
+}
+
+.inputChangeUser:focus{
+  border: 0.3rem solid #000000;
+  background-color: rgb(255, 0, 0);
+  color:#ffffff;
+  font-weight: bold;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.7);
+}
+
+.inputChangeUser:focus::placeholder {
+    color: transparent;
+}
+
+
+.ChangeUserForm input[type=password]:focus {
+  border: 0.3rem solid #000000;
+  background-color: rgb(255, 0, 0);
+  color:#ffffff;
+  font-weight: bold;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.7);
+}
+
+.ChangeUserForm input[type=password]:focus::placeholder {
+    color: transparent;
+}
+
+
+.chUserBottons{
+    display: flex;
+}
+.changeButtons{
+    background-color: #000000;
+    border: 2px solid #ffffff;
+    padding: 0.57rem 1rem;
+    color: #ffffff;
+    font-family: 'Lily Script One', serif;
+    font-size: 1.5rem;
+    cursor: pointer;
+    border-radius: 0.4rem;
+    transition: background-color 0.3s;
+    margin-top: 1.5rem;
+    width: 28%;
+    margin-left: 5rem;
+    margin-bottom: 2rem;
+}
+
+
+.chUserBottons button:hover {
+    background-color: #ffffff;
+    border: 2px solid #000000;
+    color: #000000
+}
+
+/*Carga del Frame cuando el usuario cambia password*/
+#cargaChangePassword {
+    display: flex;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.8); 
+    justify-content: center;
+}
+
+#contenidoChangePassword {
+    display: none;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    width: 40vw;
+    height: 82vh;
+    z-index: 999;
+    transform: translate(-50%, -50%);
+    border: 0.3rem solid #000000;
+    justify-content: center;
+}
+
+/*Contenido del Frame de cuando el usuario cambia username*/
+.ChangePasswordPage{
+    background-color: rgb(133, 20, 20);
+    width: 39.4vw;
+    height: 80.7vh;
+    overflow: auto;
+}
+
+.ChangePasswordTitle{
+    font-size: 2.5rem;
+    width: auto;
+    display: flex;
+    padding: 1rem;
+    font-family: 'Lily Script One', serif;
+    color:  rgb(255, 255, 255);
+}
+
+.ChangePasswordTitle h2{
+    font-style: italic;
+    font-weight: bold;
+    text-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+}
+
+.ChangePasswordForm{
+    width: auto;
+}
+
+.ChangePasswordForm input[type=password]:focus {
+  border: 0.3rem solid #000000;
+  background-color: rgb(255, 0, 0);
+  color:#ffffff;
+  font-weight: bold;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.7);
+}
+
+.ChangePasswordForm input[type=password]:focus::placeholder {
+    color: transparent;
+}
+
+
+.chPasswordBottons{
+    display: flex;
+}
+
+.chPasswordBottons button:hover {
+    background-color: #ffffff;
+    border: 2px solid #000000;
+    color: #000000
+}
+
+/*Carga del Frame cuando el usuario cambia la ciudad*/
+#cargaChangeCity {
+    display: flex;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.8); 
+    justify-content: center;
+}
+
+#contenidoChangeCity {
+    display: none;
+}
+
+/*Contenido del Frame de cuando el usuario cambia su ciudad*/
+.ChangeCityPage{
+    background-color: rgb(133, 20, 20);
+    width: 39.4vw;
+    height: 68.7vh;
+    overflow: auto;
+}
+
+.ChangeCityTitle{
+    font-size: 2.5rem;
+    width: auto;
+    display: flex;
+    padding: 1rem;
+    font-family: 'Lily Script One', serif;
+    color:  rgb(255, 255, 255);
+}
+
+.ChangeCityTitle h2{
+    font-style: italic;
+    font-weight: bold;
+    text-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+}
+
+.ChangeCityForm{
+    width: auto;
+}
+
+.inputChangeCity:focus{
+  border: 0.3rem solid #000000;
+  background-color: rgb(255, 0, 0);
+  color:#ffffff;
+  font-weight: bold;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.7);
+}
+
+.inputChangeCity:focus::placeholder {
+    color: transparent;
+}
+
+
+.ChangeCityForm input[type=password]:focus {
+  border: 0.3rem solid #000000;
+  background-color: rgb(255, 0, 0);
+  color:#ffffff;
+  font-weight: bold;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.7);
+}
+
+.ChangeCityForm input[type=password]:focus::placeholder {
+    color: transparent;
+}
+
+
+.chCityBottons{
+    display: flex;
+}
+
+.chCityBottons button:hover {
+    background-color: #ffffff;
+    border: 2px solid #000000;
+    color: #000000
+}
+
+/*Carga del Frame cuando el usuario cambia el Pais*/
+#cargaChangeCountry {
+    display: flex;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.8); 
+    justify-content: center;
+}
+
+#contenidoChangeCountry {
+    display: none;
+}
+
+/*Contenido del Frame de cuando el usuario cambia su pais*/
+.ChangeCountryPage{
+    background-color: rgb(133, 20, 20);
+    width: 39.4vw;
+    height: 68.7vh;
+    overflow: auto;
+}
+
+.ChangeCountryTitle{
+    font-size: 2.5rem;
+    width: auto;
+    display: flex;
+    padding: 1rem;
+    font-family: 'Lily Script One', serif;
+    color:  rgb(255, 255, 255);
+}
+
+.ChangeCountryTitle h2{
+    font-style: italic;
+    font-weight: bold;
+    text-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+}
+
+.ChangeCountryForm{
+    width: auto;
+}
+
+
+
+.inputChangeCountry:focus{
+  border: 0.3rem solid #000000;
+  background-color: rgb(255, 0, 0);
+  color:#ffffff;
+  font-weight: bold;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.7);
+}
+
+.inputChangeCountry:focus::placeholder {
+    color: transparent;
+}
+
+
+.ChangeCountryForm input[type=password]:focus {
+  border: 0.3rem solid #000000;
+  background-color: rgb(255, 0, 0);
+  color:#ffffff;
+  font-weight: bold;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.7);
+}
+
+.ChangeCountryForm input[type=password]:focus::placeholder {
+    color: transparent;
+}
+
+
+.chCountryBottons{
+    display: flex;
+}
+
+.chCountryBottons button:hover {
+    background-color: #ffffff;
+    border: 2px solid #000000;
+    color: #000000
+}
+
+/*Carga del Frame cuando el usuario cambia el email*/
+#cargaChangeEmail {
+    display: flex;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.8); 
+    justify-content: center;
+}
+
+#contenidoChangeEmail {
+    display: none;
+}
+
+/*Contenido del Frame de cuando el usuario cambia su email*/
+.ChangeEmailPage{
+    background-color: rgb(133, 20, 20);
+    width: 39.4vw;
+    height: 68.7vh;
+    overflow: auto;
+}
+
+.ChangeEmailTitle{
+    font-size: 2.5rem;
+    width: auto;
+    display: flex;
+    padding: 1rem;
+    font-family: 'Lily Script One', serif;
+    color:  rgb(255, 255, 255);
+}
+
+.ChangeEmailTitle h2{
+    font-style: italic;
+    font-weight: bold;
+    text-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+}
+
+.ChangeEmailForm{
+    width: auto;
+}
+
+
+.inputChangeEmail:focus{
+  border: 0.3rem solid #000000;
+  background-color: rgb(255, 0, 0);
+  color:#ffffff;
+  font-weight: bold;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.7);
+}
+
+.inputChangeEmail:focus::placeholder {
+    color: transparent;
+}
+
+
+.ChangeEmailForm input[type=password]:focus {
+  border: 0.3rem solid #000000;
+  background-color: rgb(255, 0, 0);
+  color:#ffffff;
+  font-weight: bold;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.7);
+}
+
+.ChangeEmailForm input[type=password]:focus::placeholder {
+    color: transparent;
+}
+
+
+.chEmailBottons{
+    display: flex;
+}
+
+.chEmailBottons button:hover {
+    background-color: #ffffff;
+    border: 2px solid #000000;
+    color: #000000
+}
+
+
+/*Apartado de mis cartas*/
+#cargaMyCards {
+    display: none;
+    position: fixed;
+    z-index: 998;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.8); 
+}
+
+#contenidoMyCards {
+    display: none;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    width: 80vw;
+    height: 80vh;
+    z-index: 999;
+    transform: translate(-50%, -50%);
+    border: 0.3rem solid #000000;
+}
+
+/*Contenido del Frame de Mis Cartas*/
+.MyCardsPage{
+    background-color: rgb(133, 20, 20);
+    width: 79.3vw;
+    height: 78.8vh;
+    overflow: auto;
+}
+
+.MyCardsTitle{
+    font-size: 3rem;
+    width: auto;
+    display: flex;
+    padding: 1rem;
+    font-family: 'Lily Script One', serif;
+    color:  rgb(255, 255, 255);
+}
+
+.MyCardsTitle h2{
+    font-style: italic;
+    font-weight: bold;
+    text-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+}
+
+.MyCardsTitle i {
+    font-size: 3rem;
+    margin-left: auto;
+    color: white;
+    cursor: pointer;
+    transition: color 0.3s;
+}
+
+.MyCardsTitle i:hover {
+    color: #000000
+}
+
+.infoCards{
+    display: grid;
+    grid-template-columns: 50% 50%;
+}
+
+.MyProfileCardsBox{
+    display: block;
+    margin: 1rem 1rem 2rem;
+    border: 0.3rem solid #000000;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+    border-radius: 0.7rem;
+    background-color: rgb(133, 20, 20);
+    font-size: 1.2rem;
+    width: auto;
+    padding: 1rem;
+    font-family: 'Verdana', serif;
+    color:  rgb(255, 255, 255);
+}
+
+.MyProfileCardsBox strong{
+    font-family: 'Lily Script One', serif;
+    font-size: 2rem;
+    text-decoration: underline;
+}
+
+.MyProfileCardsBox h2{
+    font-family: 'Lily Script One', serif;
+    font-size: 1.5rem;
+    text-decoration: underline;
+    display: inline
+}
+
+.mensaje {
+    white-space: normal; 
+    word-break: break-word; 
+    overflow-wrap: break-word; 
+    max-width: 100%;
+}
+
+/*Apartado de mis Paquetes*/
+#cargaMyPackages {
+    display: none;
+    position: fixed;
+    z-index: 998;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.8); 
+}
+
+#contenidoMyPackages {
+    display: none;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    width: 80vw;
+    height: 80vh;
+    z-index: 999;
+    transform: translate(-50%, -50%);
+    border: 0.3rem solid #000000;
+}
+
+.infoPackages{
+    display: block;
+}
+
+/*Test de Bondad*/
+#testDeBondad{
+    display: none;
+    position: fixed;
+    z-index: 998;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.8);
+}
+
+#testDeBondadContent p{
+    color: white;
+}
+#testBondadTitle{
+    display: flex;
+    padding: 1rem;
+    font-size: 3rem;
+}
+#testBondadTitle i {
+    font-size: 3rem;
+    margin-left: auto;
+    color: white;
+    cursor: pointer;
+    align-content: center;
+    transition: color 0.3s;
+}
+#testBondadTitle i:hover {
+    color: #000000
+}
+#testBondadTitle h2{
+    font-style: italic;
+    font-weight: bold;
+    text-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+    font-family: 'Lily Script One', serif;
+    color:  rgb(255, 255, 255);
+}
+
+#testDeBondadContent{
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    width: 70%;
+    z-index: 999;
+    transform: translate(-50%, -50%);
+    border: 0.3rem solid #000000;
+    background-color: rgba(133, 17, 17, 1);
+    padding: 1rem;
+}
+#testDeBondadContent form{
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+
+}
+#testDeBondadContent input{
+    margin: 0;
+}
+
+.test{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    font-size: 2rem;
+}
+
+.labelBondad{
+    margin: 0;
+    padding: 0;
+    width: fit-content;
+    justify-self: center;
+    align-self: center;
+}
+
+.test div{
+    align-content: center;
+    justify-content: center;
+}
+.test div input{
+    width: 20vw;
+}
+#testDeBondadContent button{
+    grid-column: span 2;
+    width: 11vw;
+    justify-self: center;
+    margin-top: 5vw;
+    font-size: 1.5rem;
+    background-color: black;
+}
+#testDeBondadContent button:hover{
+    background-color: white;
+    color: black;
+    border-color: black;
+}
+
+#goodKid{
+    display: none;
+    justify-self: center;
+    text-align: center;
+    font-size: 1.5rem;
+}
+#regalos{
+    width: 10vw;
+    height: 10vw;
+}
+#badkid{
+    display: none;
+    justify-self: center;
+    text-align: center;
+    font-size: 1.5rem;
+}
+#coal{
+    width: 10vw;
+    height: 10vw;
+}
+
+/*************************************/
+/*Mantiene el encabezado cuando bajas*/
+header.Encabezado{
+    position: sticky;
+    top: 0;
+    padding: 5px;
+    background-color: rgb(196, 7, 7);
+    z-index: 1000;
+}
+
+/************************************************/
+/*Elementos de la Primera Pagina*/
+.Page1{
+    display: grid;
+    justify-content: center;
+    width: 100%;
+    height: 100vh;
+    background-image: url("../images/Page1-Background.jpg") ;
+    background-repeat: no-repeat;
+    background-size: 200%;
+    background-position-y: center;
+    /*border-bottom: 0.3rem  solid #fafafa;*/
+}
+
+.PrincipalTitle{
+    width: 100%;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.PrincipalTitle h1{
+    color: rgb(231, 224, 224);
+    /*font-style: italic;*/
+    font-family: 'Lily Script One', serif;
+    font-size: 5.5rem;
+}
+
+.PrincipalTitle h3{
+    padding-top: 1rem;
+    padding-bottom: 1rem;
+    color: rgb(255, 255, 255);
+    font-family: 'Lily Script One', serif;
+    font-size: 2.5rem;
+}
+
+.PrincipalTitle button{
+    background-color: rgb(186, 20, 20);
+    border: 4px solid #ffffff;
+    padding: 0.7rem 3rem;
+    color: #ffffff;
+    font-family: 'Lily Script One', serif;
+    font-size: 2rem;
+    cursor: pointer;
+    border-radius: 0.4rem;
+    transition: background-color 0.3s;
+    margin-top: 1rem;
+    margin-left: -1rem;
+}
+
+.PrincipalTitle button:hover {
+    background-color: #000000;
+}
+
+/***************************************************/
+/*Divisores de página*/
+
+.PageDivisor{
+    width: 100%;
+    height: 15vh;
+    background-image: url("../images/Divisor-Pagina.png");
+    background-repeat: repeat;
+    background-size: 10%;
+
+}
+
+/***************************************************/
+/*Elementos de la Segunda Pagina*/
+.Page2{
+    align-content: center;
+    align-items: center;
+    justify-content: center;
+    justify-items: center;
+    width: 100%;
+    height: 100vh;
+    background-image: url("../images/Copos.gif");
+    background-repeat: no-repeat;
+    background-size: 320%;
+    /*border-bottom: 0.3rem  solid #fafafa;*/
+
+}
+
+.SantaTitle{
+    margin-left: 2.5rem;
+    width: auto;
+    padding: 1.5rem;
+}
+
+.SantaTitle h2{
+    color: rgb(255, 251, 251);
+    font-family:'Lily Script One', serif;
+    font-weight: bold;
+    font-size: 5rem;
+}
+
+.SecondSection{
+    display: grid;
+    grid-template-columns: 50% 50%;
+}
+
+.SantasImage{
+    justify-items: center;
+    justify-content: center;
+    align-items: center;
+    align-content: center;
+
+}
+
+.SantasImage img{
+    display: block;
+    width: 45vw;
+    border: 0.3rem solid #ffffff;
+    border-radius: 1rem;
+    margin-left: 1rem;
+}
+
+.SantaText{
+        display: grid;
+        border: 0.4rem solid red;
+        background-color: rgba(159, 31, 31, 0.92);
+        border-radius: 10px;
+        align-content: center;
+        justify-content: center;
+        margin-top: 1vh;
+        margin-right: 1.5rem;
+        padding: 0.7rem;
+    }
+
+
+.SantaText p{
+    font-size: clamp(12px, 2px, 2px);
+    color: white;
+    font-style: italic;
+    font-weight: bold;
+    text-align: justify;
+}
+
+
+/***************************************************/
+/*Elementos de la Tercera Pagina*/
+.Page3{
+    display: grid;
+    background-color: rgb(133, 20, 20);
+    width: 100%;
+    height: fit-content;
+    min-height: 100vh;
+    align-items: center;
+    overflow: auto;
+}
+
+.MailTitle{
+    font-size: 2rem;
+    display: grid;
+    align-items: center;
+    justify-content: center;
+    padding: 1rem
+}
+
+.MailTitle h2{
+    width: fit-content;
+    color: rgb(255, 255, 255);
+    font-family: 'Lily Script One', serif;
+    font-style: italic;
+    font-weight: bold;
+    text-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+}
+
+.PrincipalMail{
+    display: grid;
+    grid-template-columns: 33.33% 33.33% 33.34%;
+}
+
+.Mail{
+    background-color: rgb(210, 157, 157);
+    width: auto;
+    border: 0.5rem solid red;
+    padding: 2vh;
+    margin: 0.7rem;
+    display: block;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+}
+
+.Mail h3{
+    color: rgb(164, 17, 17);
+    font-family:'Lily Script One', serif;
+    font-size: 1.5rem;
+    margin-bottom: 0.5rem;
+    font-style: italic;
+    text-decoration: underline;
+    text-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+}
+
+.FirstBlock{
+    display: flex;
+}
+
+.FirstBlock img{
+    height: 10vh;
+    flex-direction: row;
+    justify-content: flex-start;
+}
+
+.SecondBlock{
+    display: block;
+    margin-left: 1.2rem;
+}
+
+.SecondBlock h4{
+    font-size: 0.9rem;
+    font-style: italic;
+}
+
+.SecondBlock h5{
+    font-weight: normal;
+    font-size: 0.7rem;
+}
+
+.SecondBlock p{
+    border-top: 0.1rem  solid #f90000;
+    padding-top: 0.4rem;
+    margin-top: 0.71rem;
+    font-size: 1vw;
+    font-style: italic;
+}
+
+
+/***************************************************/
+/*Elementos de la Cuarta Pagina*/
+.Page4{
+    background-color: rgb(133, 20, 20);
+    display: grid;
+    width: 100%;
+    height: 100vh;
+    overflow: auto;
+}
+
+.MyMailTitle{
+    font-size: 4rem;
+    width: auto;
+    height: fit-content;
+    display: flex;
+    justify-content: center;
+    margin-top: 4rem;
+    padding: 1rem;
+    font-family: 'Lily Script One', serif;
+    color:  rgb(255, 255, 255);
+}
+
+.MyMailTitle h2{
+    font-style: italic;
+    font-weight: bold;
+    text-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+}
+
+#MailForm{
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    margin: 0;
+}
+#letterText{
+    grid-column: span 2;
+}
+#sendLetterButton{
+    grid-column: span 2;
+    width: fit-content;
+    height: fit-content;
+    justify-self: center;
+    margin-top: 1rem;
+    margin-bottom: 3rem;
+    background-color: #000000;
+    border: 2px solid #ffffff;
+    padding: 2rem;
+    color: #ffffff;
+    font-family: 'Lily Script One', serif;
+    font-size: 1.14rem;
+    cursor: pointer;
+    border-radius: 0.4rem;
+    transition: background-color 0.3s;
+}
+#sendLetterButton:hover {
+    background-color: #ffffff;
+    border: 2px solid #000000;
+    color: #000000
+}
+.inputCform{
+    width: 40vw;
+}
+
+.inputCform:focus{
+  border: 0.3rem solid #000000;
+  background-color: rgb(255, 0, 0);
+  color:#ffffff;
+  font-weight: bold;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.7);
+}
+
+.inputCform:focus::placeholder {
+    color: transparent;
+}
+
+textarea{
+    width: 90vw;
+    padding: 0.5rem 0.5rem;
+    margin: 0 3rem 0.4rem;
+    box-sizing: border-box;
+    background-color: rgb(133, 20, 20);
+    border: 0.3rem solid red;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+    border-radius: 0.7rem;
+    color:#757070;
+    font-weight: bold;
+    -webkit-transition: 0.3s;
+    transition: 0.5s;
+    outline: none;
+}
+
+textarea:focus{
+  border: 0.3rem solid #000000;
+  background-color: rgb(255, 0, 0);
+  color:#ffffff;
+  font-weight: bold;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.7);
+}
+
+textarea:focus::placeholder {
+    color: transparent;
+}
+
+label{
+    font-size: 1.5rem;
+    font-family: 'Lily Script One', serif;
+    width: 25vw;
+    display: flex;
+    margin-top: 1rem;
+    margin-bottom: 0;
+    margin-left: 3rem;
+    color: rgb(255, 255, 255);
+    font-style: italic;
+    font-weight: bold;
+    text-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+}
+
+
+
+/*******************************/
+/* Pagina de Juegos (Pagina 5) */
+#Page5{
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 80%;
+    border: 0.3rem solid red;
+    box-shadow: 0.4rem 0.4rem 1rem rgba(0, 0, 0, 0.3);
+    text-align: center;
+    font-family: 'Verdana', serif;
+    border-radius: 1rem;
+    background: linear-gradient(to right, #ffcccc, #ffe6e6);
+    margin: 0 auto;
+    padding: 0;
+    min-height: fit-content;
+}
+
+#hh2{
+    font-size: clamp(3vw, 5vw, 7vw);
+    font-family: 'Lily Script One', serif;
+    font-style: italic;
+    font-weight: bold;
+    text-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+    padding: 1rem;
+    margin: 100px 0;
+}
+
+
+#game{
+    margin: 0 auto;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-content: center;
+    vertical-align: center;
+}
+
+#opciones_juego{
+    display: flex;
+    height: 100%;
+    flex-direction: column;
+    justify-content: space-between;
+    background-color: white;
+}
+
+#opciones_juego label{
+    padding: 1vw;
+    margin: 1vw;
+    text-align: center;
+    font-family: "Verdana", serif;
+    background-color: white;
+    font-size: 1.2rem;
+    white-space: nowrap;
+    justify-content: space-between;
+    display: block;
+}
+
+#opciones_juego label:hover{
+    background-color: #ce6262;
+    color: wheat;
+}
+
+#juego1, #juego2, #juego3{
+    display: none;
+    white-space: nowrap;
+
+}
+.option{
+    margin-top: 0.5rem;
+    margin-bottom: 0.5rem;
+}
+#juego1:checked ~ label, #juego2:checked ~ label, #juego3:checked ~ label{
+    background-color: red;
+    color: white;
+}
+
+.imagesss{
+    height: fit-content;
+}
+
+#marcadores{
+    align-content: center;
+    align-items: center;
+}
+
+#marcadoresglobales{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background-color: #ce6262;
+    color: white;
+    font-family: 'Verdana', serif;
+    font-size: 1.5rem;
+    padding: 1rem;
+    margin: 1rem;
+    width: fit-content;
+    border-radius: 1rem;
+    box-shadow: 0.4rem 0.4rem 1rem rgba(0, 0, 0, 0.3);
+}
+
+#marcadoresglobales h3{
+    font-size: clamp(0.8vw, 3vw, 6vw);
+    font-family: 'Verdana', serif;
+    font-style: italic;
+    font-weight: bold;
+    text-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+    padding: 1rem;
+    margin: 0;
+}
+
+#marcadoresglobales p{
+    font-size: clamp(0.4vw, 2vw, 3vw);
+    font-family: 'Verdana', serif;
+    font-style: italic;
+    font-weight: bold;
+    text-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+    padding: 1rem;
+    margin: 0;
+}
+
+
+#Imagen1, #Imagen2, #Imagen3{
+    position: relative;
+    display: none;
+    width: 30vw;
+    height: 30vw;
+    background-color: #1c1c1c;
+}
+
+
+#circulo{
+    width: 6vw;
+    height: 6vw;
+    position: absolute;
+    display: none;
+    margin: 0;
+}
+#gameTimer{
+    color: white;
+    padding: 1.5%;
+    margin: 0;
+}
+#gameScore{
+    margin: 0;
+    padding: 1.5%;
+    color: white;
+}
+
+
+.simondicecolores {
+    margin: auto;
+    width: 10vw;
+    height: 10vw;
+    visibility: hidden;
+
+}
+#gameScore2{
+    padding: 1.5%;
+    font-size: 1.5vw;
+    color: white;
+}
+#gameScore22{
+    margin-bottom: 10%;
+    padding: 1.5%;
+    color: white;
+    font-size: 1.5vw;
+}
+
+
+/* Pagina de Calendario de Adviento (Pagina 6) */
+.Page6{
+    margin: 60px 0;
+    display: grid;
+    justify-content: center;
+    background-color: rgb(133, 20, 20);
+    width: 100%;
+    min-height: 100vh;
+    height: fit-content;
+}
+
+.Decoraciones6{
+    margin: 0;
+    padding: 0;
+    position: relative;
+}
+.Decoraciones6 img{
+    position: absolute;
+    z-index: 0;
+    margin: 0;
+    padding: 0;
+    width: 30em;
+    height: 27em;
+}
+.Decoraciones6_1{
+    transform: rotate(49.61deg);
+    left: -11%;
+    top: 10em;
+}
+.Decoraciones6_2{
+    transform: rotate(-128.1deg);
+    left: -11%;
+    top: 30em;
+}
+.Decoraciones6_3{
+    transform: rotate(24.29deg);
+    left: 80%;
+    top: 29em;
+}
+.Decoraciones6_4{
+    transform: rotate(-73.34deg);
+    left: 80%;
+    top: 6em;
+}
+
+.MyCalendarTitle{
+    height: fit-content;
+    display: grid;
+    margin-top: 60px;
+    justify-content: center;
+    padding: 0;
+
+}
+.MyCalendarTitle h1{
+    padding: 0;
+    margin: 0;
+    font-size: 7vw;
+    color:  rgb(255, 255, 255);
+    font-family: 'Lily Script One', serif;
+}
+.Calendario{
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+    grid-template-rows: repeat(4, 1fr);
+    width: fit-content;
+    height: 70vw;
+    border: 2px solid black;
+}
+.Dia{
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: darkgreen;
+    border: 2px solid black;
+    cursor: pointer;
+    width: 100%;
+}
+.Dia p{
+    position: absolute;
+    top: 3%;
+    left: 79%;
+    font-size: 1.5vw;
+    color: white;
+    font-family: 'Lily Script One', serif;
+}
+.Dia:hover{
+    background-color: white;
+}
+.Dia:hover p{
+    color: black;
+}
+
+.Dia_ultimo{
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: darkgreen;
+    border: 2px solid black;
+    grid-column: span 4;
+    cursor: pointer;
+}
+.Dia_ultimo:hover{
+    background-color: white;
+}
+.Dia_ultimo:hover p{
+    color: black;
+}
+.Dia_ultimo img{
+    position: relative;
+    margin:0;
+    padding: 0;
+    height: 8.5em;
+    width: 100%;
+}
+.Dia_ultimo p{
+    top: 3%;
+    left: 94%;
+    position: absolute;
+    font-size: 1.5vw;
+    color: white;
+    font-family: 'Lily Script One', serif;
+}
+.Dia img{
+    position: relative;
+    margin:0;
+    padding: 0;
+    height: 12vw;
+    width: 12vw;
+}
+.Frase_del_dia_ventana{
+    display:none;
+    flex-direction: column;
+    background-color: rgb(133, 20, 20);
+    position: fixed;
+    padding: 50px;
+    top: 55%;
+    left: 50%;
+    width: 80vw;
+    height: fit-content;
+    z-index: 1000;
+    text-align: center;
+    align-content: center;
+    transform: translate(-50%, -50%);
+    border: 0.3rem solid #000000;
+}
+.Frase_del_dia_ventana i{
+    position: absolute;
+    top: 2%;
+    left: 94%;
+    display: block;
+    font-size: 3rem;
+    margin-left:0;
+    color: white;
+    cursor: pointer;
+    transition: color 0.3s;
+}
+.Frase_del_dia_ventana h1{
+    align-content: baseline;
+    color: white;
+    font-family: 'Lily Script One', serif;
+    font-size: 6em;
+    text-decoration: underline;
+}
+.Frase_del_dia_ventana p{
+    color: white;
+    font-family: 'Lily Script One', serif;
+    font-size: 4vw;
+    margin-top: 1rem;
+}
+
+#pepepe {
+        display: none;
+    }
+
+
+/* Pagina de Viajes (Pagina 7) */
+.Page7 {
+    display: grid;
+    background-color: rgb(133, 20, 20);
+    width: 100%;
+    height: fit-content;
+    min-height: 100vh;
+    align-items: center;
+    overflow: auto;
+    grid-template-rows: auto 1fr;
+    gap: 1rem;
+}
+
+.MyTravelTitle {
+    font-size: 2rem;
+    width: auto;
+    display: grid;
+    align-items: center;
+    justify-content: center;
+    padding: 1rem;
+}
+
+.MyTravelTitle h2 {
+    width: fit-content;
+    color: rgb(255, 255, 255);
+    font-family: 'Lily Script One', serif;
+    font-style: italic;
+    font-weight: bold;
+    text-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+}
+
+.TravelPackages {
+    display: grid;
+    grid-template-columns: 30.33% 30.33% 30.33%;
+    justify-content: space-evenly;
+    gap: 1rem;
+}
+
+
+.TravelInfo {
+    background-color: rgb(210, 157, 157);
+    width: auto;
+    border: 0.5rem solid red;
+    margin: 0.7rem;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+}
+
+.TravelInfo h3 {
+    color: rgb(164, 17, 17);
+    font-family: 'Lily Script One', serif;
+    font-size: 1.5rem;
+    margin-bottom: 0.5rem;
+    font-style: italic;
+    text-decoration: underline;
+    text-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+}
+
+.container {
+    position: relative;
+    width: 100%;
+    margin: auto;
+}
+
+.container img{
+    display: none;
+}
+
+.cursor {
+    cursor: pointer;
+}
+
+.prev,
+.next {
+    cursor: pointer;
+    position: absolute;
+    top: 50%;
+    width: auto;
+    padding: 16px;
+    color: white;
+    font-weight: bold;
+    font-size: 1.5vw;
+    border-radius: 0 3px 3px 0;
+    user-select: none;
+    -webkit-user-select: none;
+    background-color: rgba(0, 0, 0, 0.8);
+    transition: background-color 0.3s;
+}
+
+.next {
+    right: 0;
+    border-radius: 3px 0 0 3px;
+}
+
+.prev:hover,
+.next:hover {
+    background-color: rgba(255, 255, 255, 0.6);
+    color: black;
+}
+
+.numbertext {
+    display: none;
+    background-color: rgba(0, 0, 0, 0.8);
+    color: #f2f2f2;
+    font-size: 1.5vw;
+    padding: 8px 12px;
+    position: absolute;
+    top: 0;
+}
+
+.SecondTravelBlock{
+    display: block;
+    margin-left: 1.2rem;
+}
+
+.SecondTravelBlock p{
+    border-top: 0.1rem  solid #f90000;
+    padding-top: 0.4rem;
+    margin-top: 0.71rem;
+    margin-left: 0;
+    font-size: 1vw;
+    font-style: italic;
+}
+
+.SecondTravelBlock button {
+    background-color: #000000;
+    border: 2px solid #ffffff;
+    padding: 0.57rem 1rem;
+    color: #ffffff;
+    font-family: 'Lily Script One', serif;
+    font-size: 1.14rem;
+    cursor: pointer;
+    border-radius: 0.4rem;
+    transition: background-color 0.3s;
+    margin-top: 1.2rem;
+    width: 50%;
+    margin-left: 25%;
+    margin-bottom: 0.7rem;
+}
+
+.SecondTravelBlock button:hover {
+    background-color: #ffffff;
+    border: 2px solid #000000;
+    color: #000000
+}
+
+.container2 {
+    position: relative;
+    width: 100%;
+    margin: auto;
+}
+
+.container2 img{
+    display: none;
+}
+
+.cursor2 {
+    cursor: pointer;
+}
+
+.prev2,
+.next2 {
+    cursor: pointer;
+    position: absolute;
+    top: 50%;
+    width: auto;
+    padding: 16px;
+    color: white;
+    font-weight: bold;
+    font-size: 1.5vw;
+    border-radius: 0 3px 3px 0;
+    user-select: none;
+    -webkit-user-select: none;
+    background-color: rgba(0, 0, 0, 0.8);
+    transition: background-color 0.3s;
+}
+
+.next2 {
+    right: 0;
+    border-radius: 3px 0 0 3px;
+}
+
+.prev2:hover,
+.next2:hover {
+    background-color: rgba(255, 255, 255, 0.6);
+    color: black;
+}
+
+.numbertext2 {
+    display: none;
+    background-color: rgba(0, 0, 0, 0.8);
+    color: #f2f2f2;
+    font-size: 1.5vw;
+    padding: 8px 12px;
+    position: absolute;
+    top: 0;
+}
+
+.container3 {
+    position: relative;
+    width: 100%;
+    margin: auto;
+}
+
+.container3 img{
+    display: none;
+}
+
+img.displaySlide{
+    display: block;
+}
+.cursor3 {
+    cursor: pointer;
+}
+
+.prev3,
+.next3 {
+    cursor: pointer;
+    position: absolute;
+    top: 50%;
+    width: auto;
+    padding: 16px;
+    color: white;
+    font-weight: bold;
+    font-size: 1.5vw;
+    border-radius: 0 3px 3px 0;
+    user-select: none;
+    -webkit-user-select: none;
+    background-color: rgba(0, 0, 0, 0.8);
+    transition: background-color 0.3s;
+}
+
+.next3 {
+    right: 0;
+    border-radius: 3px 0 0 3px;
+}
+
+.prev3:hover,
+.next3:hover {
+    background-color: rgba(255, 255, 255, 0.6);
+    color: black;
+}
+
+.numbertext3 {
+    display: none;
+    background-color: rgba(0, 0, 0, 0.8);
+    color: #f2f2f2;
+    font-size: 1.5vw;
+    padding: 8px 12px;
+    position: absolute;
+    top: 0;
+}
+
+/***************************************************/
+/*Elementos del Formulario para planificar el viaje*/
+
+/*****************************/
+/*Carga del Frame de Paquetes*/
+#cargaPaquete {
+    display: none;
+    position: fixed;
+    z-index: 998;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.8); 
+}
+
+#contenidoPaquete {
+    display: none;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    z-index: 999;
+    transform: translate(-50%, -50%);
+    border: 0.3rem solid #000000;
+}
+
+/*****************************/
+/*Contenido del Frame de Paquetes*/
+.PlanificatorTravelPage{
+    background-color: rgb(133, 20, 20);
+    width: 79.3vw;
+    height: fit-content;
+    padding: 30px;
+    overflow: auto;
+}
+
+.PlanificatorTravelTitle{
+    font-size: 2rem;
+    width: auto;
+    display: grid;
+    justify-content: center;
+    padding: 1rem;
+    font-family: 'Lily Script One', serif;
+    color:  rgb(255, 255, 255);
+}
+
+.PlanificatorTravelTitle h2{
+    font-style: italic;
+    font-weight: bold;
+    text-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+}
+#travelInputs{
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    width: 100%;
+    height: 20vw;
+    overflow-y: scroll;
+}
+input[type=tel]:focus {
+    border: 0.3rem solid #000000;
+    background-color: rgb(255, 0, 0);
+    color:#ffffff;
+    font-weight: bold;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.7);
+}
+  
+input[type=tel]:focus::placeholder {
+    color: transparent;
+}
+
+input[type=tel]::-webkit-inner-spin-button{
+    -webkit-appearance: none;
+    margin: 0;
+}
+
+input[type=tel]::-webkit-outer-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+
+input[type=date]:focus {
+    border: 0.3rem solid #000000;
+    background-color: rgb(255, 0, 0);
+    color:#ffffff;
+    font-weight: bold;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.7);
+}
+
+input[type=date]:focus::placeholder {
+    color: transparent;
+}
+
+input[type=date]::-webkit-inner-spin-button{
+    -webkit-appearance: none;
+    margin: 0;
+}
+input[type=date]::-webkit-outer-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+
+/***************************************************/
+/*Elementos del Pie de Pagina*/
+
+.footer{
+    width: 100%;
+    background-color: rgb(4, 71, 12);
+    background-image: linear-gradient(to bottom right, rgb(4, 71, 12), rgb(39, 121, 43), rgb(79, 128, 73));
+    display: grid;
+    grid-template-columns: 50% 50%;
+}
+
+.logoFooter{
+    height: 15vh; 
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    margin-top: 1rem;
+}
+
+.SocialMedia{
+    display: flex;
+    justify-content: center;
+    margin-left: 2rem;
+    margin-top: 1rem;
+}
+
+.fa{
+    padding: 1rem;
+    width: 4rem;
+    text-align: center;
+    text-decoration: none;
+    margin: 2px 2px;
+}
+
+.fa:hover{
+    background: white;
+    color: rgb(0, 0, 0);
+    border: 0.1rem solid #000000;
+
+}
+
+.fa-facebook {
+    background: transparent;
+    color: rgb(255, 255, 255);
+    border: 0.1rem solid #ffffff;
+}
+
+.fa-google {
+    background: transparent;
+    color: rgb(255, 255, 255);
+    border: 0.1rem solid #ffffff;
+}
+
+.fa-twitter {
+    background: transparent;
+    color: rgb(255, 255, 255);
+    border: 0.1rem solid #ffffff;
+}
+
+.fa-instagram {
+    background: transparent;
+    color: rgb(255, 255, 255);
+    border: 0.1rem solid #ffffff;
+}
+
+.fa-pinterest {
+    background: transparent;
+    color: rgb(255, 255, 255);
+    border: 0.1rem solid #ffffff;
+}
+
+.fa-youtube{
+    background: transparent;
+    color: rgb(255, 255, 255);
+    border: 0.1rem solid #ffffff;
+}
+
+.SecondFooterPart{
+    display: grid;
+    margin-top: 1rem;
+}
+
+.Contact{
+    display: grid;
+    margin-top: 1rem;
+}
+
+.WebPolitics{
+    display: grid;
+    margin-top: 1rem;
+}
+
+.Contact h2{
+    color: #ffffff;
+    font-style: italic;
+    font-weight: bold;
+    text-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+}
+
+a{
+    display: block;
+    margin: 0.4rem;
+    text-decoration: none;
+    color: #cbcbcb;
+}
+
+/**********************************************************************************************************************************/
+/*Media para telefono*/
+@media screen and (max-width: 600px) {
+
+    /*Cambios para el Encabezado*/
+    header.Encabezado{
+        display: flex;
+        height: fit-content;
+    }
+
+    p{
+        font-size: 1rem;
+    }
+    h2{
+        font-size: 3rem;
+    }
+    .logo img{
+        width:10vw;
+    }
+
+    #pepepe {
+        display: block;
+    }
+
+    .MenuPrincipal{
+        display: flex;
+        top: 0;
+        height: fit-content;
+    }
+
+    .MenuPrincipal a{
+        font-size: 0.5rem;
+        border-right: none;
+        margin-bottom: 0.5rem;
+        margin-top: 0.05rem;
+        padding: 0.1rem;
+    }
+
+    .MenuPrincipal a::after {
+        content: ''; 
+        position: absolute; 
+        bottom: -15%; 
+        top: -10%;
+        left: 0; 
+        height: 0.071rem; 
+        width: 100%; 
+        background-color: #ffffff; 
+    }
+
+    .MenuPrincipal a:first-child::after {
+        background-color: transparent;
+    }
+
+    .MenuPrincipal a.no-border {
+        font-size: 0.9rem;
+    }
+
+    .MenuPrincipal a.no-border:last-child {
+        border-bottom: none;
+    }
+
+    .MenuPrincipal button{
+        font-size: 9px;
+        margin-top: 0.1rem;
+        margin-left: 0.2rem
+    }
+    #LogInBotton{
+        padding: 0.2rem;
+    }
+    #RegisterBotton{
+        padding: 0.2rem;
+    }
+    #MyAccount{
+        padding: 0.2rem;
+    }
+    /*Cambios para el formulario de registro*/
+    .inputRform{
+        width: 20vw;
+        margin: 0.2rem 1rem;
+    }
+
+    input[type=password]{
+        width: 30vw;
+        margin: 0.2rem 1rem;
+    }
+
+    input[type=number]{
+        width: 30vw;
+        margin: 0.2rem 1rem;
+    }
+
+    select{
+        width: 30vw;
+        margin: 0.2rem 1rem;
+    }
+
+
+    label{
+        font-size: 1.2rem;
+        width: 33vw;
+    }
+
+    .rBottons button{
+        margin-left: 1rem;
+        font-size: 0.8rem;
+        margin-top: 2rem;
+        width: 28%;
+        padding: 0.3rem;
+    }
+
+    /*Cambios para el formulario de Log In*/
+    #contenidoLogIn {
+        width: 65vw;
+        height: fit-content;
+    }
+
+    .LogInPage{
+        width: 63.5vw;
+    }
+
+    .LogInTitle{
+        font-size: 2rem;
+    }
+
+    .LogInForm input[type=password]{
+        margin-bottom: 2rem;
+    }
+
+    .labelLogIn{
+        font-size: 1.5rem;
+        width: 45vw;
+    }
+
+
+    /*Cambios para la ventana de la info del usuario */
+    #contenidoDatos {
+        width: 80vw;
+        height: 80vh;
+    }
+
+    .MyProfilePage{
+        width: 78.5vw;
+        height: 78.8vh;
+    }
+
+    .MyProfileTitle{
+        font-size: 2rem;
+    }
+
+    .MyProfileTitle i {
+        font-size: 2rem;
+    }
+
+    .MyProfileInfo{
+        font-size: 1.2rem;
+    }
+
+    .MyProfileData{
+        font-size: 0.9rem;
+    }
+
+    .material-icons{
+        font-size: 0.8rem;
+        margin-left: 0.5rem;
+    }
+
+
+
+    /*Cambios para el formulario de Cambio de Usuario*/
+    #contenidoChangeUser {
+        width: 65vw;
+        height: 65vh;
+    }
+
+    .ChangeUserPage{
+        width: 63.5vw;
+        height: 63.8vh;
+    }
+
+    .ChangeUserTitle{
+        font-size: 1.5rem;
+    }
+
+    .ChangeUserForm input[type=password]{
+        margin-bottom: 2rem;
+    }
+
+    .labelChangeUser{
+        font-size: 1.2rem;
+        width: 45vw;
+    }
+
+    .chUserBottons button {
+        font-size: 1rem;
+        padding: 1rem 1rem;
+        margin-left: 3.2rem;
+    }
+
+    /*Cambios para el formulario de Cambio de Password*/
+    #contenidoChangePassword {
+        width: 65vw;
+        height: 87vh;
+    }
+
+    .ChangePasswordPage{
+        width: 63.5vw;
+        height: 85.8vh;
+    }
+
+    .ChangePasswordTitle{
+        font-size: 1.5rem;
+    }
+
+    .ChangePasswordForm input[type=password]{
+        margin-bottom: 2rem;
+    }
+
+    .labelChangePassword{
+        font-size: 1.2rem;
+        width: 45vw;
+    }
+
+    .chPasswordBottons button {
+        font-size: 1rem;
+        padding: 1rem 1rem;
+        margin-left: 3.2rem;
+    }
+
+    /*Cambios para el formulario de Cambio de Ciudad*/
+    #contenidoChangeCity {
+        width: 65vw;
+        height: 65vh;
+    }
+
+    .ChangeCityPage{
+        width: 63.5vw;
+        height: 63.8vh;
+    }
+
+    .ChangeCityTitle{
+        font-size: 1.5rem;
+    }
+
+    .ChangeCityForm input[type=password]{
+        margin-bottom: 2rem;
+    }
+
+    .labelChangeCity{
+        font-size: 1.2rem;
+        width: 45vw;
+    }
+
+    .chCityBottons button {
+        font-size: 1rem;
+        padding: 1rem 1rem;
+        margin-left: 3.2rem;
+    }
+
+    /*Cambios para el formulario de Cambio de Email*/
+    #contenidoChangeEmail {
+        width: 65vw;
+        height: 65vh;
+    }
+
+    .ChangeEmailPage{
+        width: 63.5vw;
+        height: 63.8vh;
+    }
+
+    .ChangeEmailTitle{
+        font-size: 1.5rem;
+    }
+
+    .ChangeEmailForm input[type=password]{
+        margin-bottom: 2rem;
+    }
+
+    .labelChangeEmail{
+        font-size: 1.2rem;
+        width: 45vw;
+    }
+
+    .chEmailBottons button {
+        font-size: 1rem;
+        padding: 1rem 1rem;
+        margin-left: 3.2rem;
+    }
+
+    /*Cambios para el formulario de Cambio de Pais*/
+    #contenidoChangeCountry {
+        width: 65vw;
+        height: 65vh;
+    }
+
+    .ChangeCountryPage{
+        width: 63.5vw;
+        height: 63.8vh;
+    }
+
+    .ChangeCountryTitle{
+        font-size: 1.5rem;
+    }
+
+    .ChangeCountryForm input[type=password]{
+        margin-bottom: 2rem;
+    }
+
+    .labelChangeCountry{
+        font-size: 1.2rem;
+        width: 45vw;
+    }
+
+    .chCountryBottons button {
+        font-size: 1rem;
+        padding: 1rem 1rem;
+        margin-left: 3.2rem;
+    }
+
+
+    /*Cambios para la ventana de mis cartas */
+    #contenidoMyCards {
+        width: 80vw;
+        height: 80vh;
+    }
+
+    .MyMyCardsPage{
+        width: 78.5vw;
+        height: 78.8vh;
+    }
+
+    .MyCardsTitle{
+        font-size: 2rem;
+    }
+
+    .MyCardsTitle i {
+        font-size: 2rem;
+    }
+
+    .MyCardsInfo{
+        font-size: 1.2rem;
+    }
+
+    .MyCardsData{
+        font-size: 0.9rem;
+    }
+
+    .infoCards{
+        display: block;
+    }
+
+    .MyProfileCardsBox{
+        font-size: 0.8rem;
+    }
+    
+    .MyProfileCardsBox strong{
+        font-size: 1.5rem;
+    }
+    
+    .MyProfileCardsBox h2{
+        font-size: 1.1rem;
+    }
+
+
+    .PrincipalMail{
+        grid-template-columns: 100%;
+    }
+
+    .PrincipalTitle h1{
+        font-size: 3.8rem;
+    }
+
+    .PrincipalTitle h3{
+        font-size: 2rem;
+    }
+
+    .PrincipalTitle button{
+        font-size: 1.5rem;
+    }
+
+    .TravelPackages{
+        grid-template-columns: 100%;
+    }
+
+    .SecondTravelBlock p{
+        font-size: 2vw;
+
+    }
+
+    #testBondadTitle h2{
+        font-size: 1.8rem;
+    }
+    #testBondadTitle i{
+        font-size: 1.5rem;
+    }
+    #testDeBondadContent input{
+        width: 20vw;
+        height: 5vw;
+    }
+    #testDeBondadContent button{
+        font-size: 1rem;
+        width: 20vw;
+    }
+    #testDeBondadContent form{
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+    #testDeBondadContent p{
+        margin: 0.5rem;
+    }
+    #testDeBondadContent label{
+        margin: 0;
+    }
+    #goodKid{
+        margin-top: 4vw ;
+    }
+    #goodKid p{
+        font-size: 1.5rem;
+    }
+    #regalos{
+    width: 20vw;
+    height: 20vw;
+    }
+    #badkid{
+        margin-top: 4vw ;
+    }
+    #badkid p{
+        font-size: 1.5rem;
+    }
+    #coal{
+    width: 20vw;
+    height: 20vw;
+    }
+
+    /*Divisores de página*/
+
+    .PageDivisor{
+        height: 5.2vh;
+    }
+
+
+    .SecondSection{
+        grid-template-columns: 35% 65%;
+    }
+
+    .SantaTitle h2{
+        font-size: 2rem;
+    }
+
+    
+    /*Cambios para la Tercera Página*/
+    .Page3{
+        border-bottom: 0.3rem  solid #fafafa;
+    }
+
+    /*Cambios para la Cuarta Página*/
+    textarea{
+        margin-left: 10vw;
+        width: 80vw;
+    }
+
+    input[type=email]{
+        width: 30vw;
+    }
+
+    input[type=text]{
+        width: 30vw;
+    }
+
+    .FinishLine button {
+        margin-left: 25%;
+    }
+
+    label{
+        margin-left: 1.5rem;
+        margin-top: 0.5rem;
+    }
+
+    .PlanificatorTravelTitle h2{
+    font-size: 1.5rem;
+    }
+    #travelInputs{
+        display: flex;
+        align-content: center;
+        align-items: center;
+        flex-direction: column;
+        width: 100%;
+        height: 70vw;
+        overflow-y: scroll;
+    }
+    #travelInputs div{
+        display: grid;
+    }
+
+    #travelInputs input{
+        margin: 2px 0;
+    }
+    #travelInputs label{
+        margin: 8px 0;
+    }
+
+    .PlanificatorTravelPage{
+        background-color: rgb(133, 20, 20);
+        width: 79.3vw;
+        height: 100%;
+        overflow: auto;
+    }
+    /*Cambios para la Sexta Página*/
+    .Frase_del_dia_ventana i{
+        left: 87%;
+    }   
+
+    /*Cambios para el Footer*/
+    .footer{
+        grid-template-columns: 100%;
+    }
+
+    .SecondFooterPart{
+        display: grid;
+        justify-content: center;
+        align-items: center;
+    }
+
+    div.content {margin-left: 0;}
+
+    .Contact h2{
+        font-size: 2rem;        
+    }
+
+    a{
+        font-size: 1rem;
+    }
+}
+
+/*Media para tablets****************************************************************************************************************/
+@media screen and (max-width: 768px) and (min-width: 600px) {
+    p{
+        font-size: 1.3rem;
+    }
+    /*Cambios para el Encabezado*/
+    div.logo{
+        display: none;
+    }
+
+    .MenuPrincipal a{
+        font-size: 1.5vw;
+    }
+
+    #RegisterBotton{
+        font-size: 1.5vw;
+    }
+    #LogInBotton{
+        font-size: 1.5vw;
+    }
+
+
+
+
+    div.content {margin-left: 0;}
+
+    label{
+        font-size: 1.2rem;
+        width: 30vw;
+    }
+
+    .rBottons button{
+        margin-left: 1.5rem;
+    }
+
+    /*Cambios para el formulario de Log In*/
+    #contenidoLogIn {
+        width: 65vw;
+        height: fit-content;
+    }
+
+    .LogInPage{
+        width: 63.5vw;
+    }
+
+    .LogInTitle{
+        font-size: 3rem;
+    }
+
+    .LogInForm input[type=password]{
+        margin-bottom: 2rem;
+    }
+
+    .labelLogIn{
+        font-size: 2rem;
+        width: 45vw;
+    }
+
+
+    /*Cambios para la ventana de la info del usuario */
+    #contenidoDatos {
+        width: 80vw;
+        height: 80vh;
+    }
+
+    .MyProfilePage{
+        width: 78.5vw;
+        height: 78.8vh;
+    }
+
+    .MyProfileTitle{
+        font-size: 3rem;
+    }
+
+    .MyProfileTitle i {
+        font-size: 2rem;
+    }
+
+    .MyProfileInfo{
+        font-size: 1.5rem;
+    }
+
+    .MyProfileData{
+        font-size: 1rem;
+    }
+
+    .material-icons{
+        font-size: 1rem;
+        margin-left: 0.5rem;
+    }
+
+
+    /*Cambios para el formulario de Cambio de User*/
+    #contenidoChangeUser {
+        width: 65vw;
+        height: 75vh;
+    }
+
+    .ChangeUserPage{
+        width: 63.5vw;
+        height: 73.8vh;
+    }
+
+    .ChangeUserTitle{
+        font-size: 2.2rem;
+    }
+
+    .ChangeUserForm input[type=password]{
+        margin-bottom: 3rem;
+    }
+
+    .labelChangeUser{
+        font-size: 2rem;
+        width: 45vw;
+    }
+
+    .chUserBottons button {
+        font-size: 3rem;
+        padding: 1rem 1rem;
+        margin-left: 5rem;
+    }
+
+    /*Cambios para el formulario de Cambio de Password*/
+    #contenidoChangePassword {
+        width: 65vw;
+        height: 85vh;
+    }
+
+    .ChangePasswordPage{
+        width: 63.5vw;
+        height: 83.8vh;
+    }
+
+    .ChangePasswordTitle{
+        font-size: 2.2rem;
+    }
+
+    .ChangePasswordForm input[type=password]{
+        margin-bottom: 1rem;
+    }
+
+    .labelChangePassword{
+        font-size: 2rem;
+        width: 45vw;
+    }
+
+    .chPasswordBottons button {
+        font-size: 3rem;
+        padding: 1rem 1rem;
+        margin-left: 5rem;
+    }
+
+    /*Cambios para el formulario de Cambio de City*/
+    #contenidoChangeCity {
+        width: 65vw;
+        height: 75vh;
+    }
+
+    .ChangeCityPage{
+        width: 63.5vw;
+        height: 73.8vh;
+    }
+
+    .ChangeCityTitle{
+        font-size: 2.2rem;
+    }
+
+    .ChangeCityForm input[type=password]{
+        margin-bottom: 3rem;
+    }
+
+    .labelChangeCity{
+        font-size: 2rem;
+        width: 45vw;
+    }
+
+    .chCityBottons button {
+        font-size: 3rem;
+        padding: 1rem 1rem;
+        margin-left: 5rem;
+    }
+
+    /*Cambios para el formulario de Cambio de Email*/
+    #contenidoChangeEmail {
+        width: 65vw;
+        height: 75vh;
+    }
+
+    .ChangeEmailPage{
+        width: 63.5vw;
+        height: 73.8vh;
+    }
+
+    .ChangeEmailTitle{
+        font-size: 2.2rem;
+    }
+
+    .ChangeEmailForm input[type=password]{
+        margin-bottom: 3rem;
+    }
+
+    .labelChangeEmail{
+        font-size: 2rem;
+        width: 45vw;
+    }
+
+    .chEmailBottons button {
+        font-size: 3rem;
+        padding: 1rem 1rem;
+        margin-left: 5rem;
+    }
+
+    /*Cambios para el formulario de Cambio de Pais*/
+    #contenidoChangeCountry {
+        width: 65vw;
+        height: 75vh;
+    }
+
+    .ChangeCountryPage{
+        width: 63.5vw;
+        height: 73.8vh;
+    }
+
+    .ChangeCountryTitle{
+        font-size: 2.2rem;
+    }
+
+    .ChangeCountryForm input[type=password]{
+        margin-bottom: 3rem;
+    }
+
+    .labelChangeCountry{
+        font-size: 2rem;
+        width: 45vw;
+    }
+
+    .chCountryBottons button {
+        font-size: 3rem;
+        padding: 1rem 1rem;
+        margin-left: 5rem;
+    }
+
+    /*Cambios para la ventana de las cartas */
+    #contenidoMyCards {
+        width: 80vw;
+        height: 80vh;
+    }
+
+    .MyCardsPage{
+        width: 78.5vw;
+        height: 78.8vh;
+    }
+
+    .MyCardsTitle{
+        font-size: 3rem;
+    }
+
+    .MyCardsTitle i {
+        font-size: 2rem;
+    }
+
+    .MyCardsInfo{
+        font-size: 1.5rem;
+    }
+
+    .MyCardsData{
+        font-size: 1rem;
+    }
+
+    .material-icons{
+        font-size: 1rem;
+        margin-left: 0.5rem;
+    }
+
+    .MyProfileCardsBox{
+        font-size: 1rem;
+    }
+    
+    .MyProfileCardsBox strong{
+        font-size: 1.8rem;
+    }
+    
+    .MyProfileCardsBox h2{
+        font-size: 1.5rem;
+    }
+
+    .PrincipalMail{
+        grid-template-columns: 50% 50%;
+    }
+
+    .PrincipalTitle h1{
+        font-size: 4.5rem;
+    }
+
+    .PrincipalTitle h3{
+        font-size: 2.5rem;
+    }
+
+    .PrincipalTitle button{
+        font-size: 2rem;
+    }
+
+    #testBondadTitle{
+        font-size: 1.2rem;
+    }
+    #testBondadTitle i{
+        font-size: 1.5rem;
+    }
+    #testDeBondadContent input{
+        width: 20vw;
+        height: 4vw;
+    }
+    #testDeBondadContent button{
+        font-size: 1rem;
+        width: 20vw;
+    }
+
+    #testDeBondadContent p{
+        min-height: 3.6rem;
+    }
+    #goodKid{
+        margin-top: 4vw ;
+    }
+    #goodKid p{
+        font-size: 1.5rem;
+    }
+    #regalos{
+    width: 20vw;
+    height: 20vw;
+    }
+    #badkid{
+        margin-top: 4vw ;
+    }
+    #badkid p{
+        font-size: 1.5rem;
+    }
+    #coal{
+    width: 20vw;
+    height: 20vw;
+    }
+
+    /*Divisores de página*/
+
+    .PageDivisor{
+        height: 7.5vh;
+    }
+
+
+    .SantaTitle h2{
+        font-size: 5rem;
+    }
+
+
+
+
+    /*Cambios para la Tercera Página*/
+    .Page3{
+        border-bottom: 0.3rem  solid #fafafa;
+    }
+
+    /*Cambios para la Cuarta Página*/
+    textarea{
+        margin-left: 10vw;
+        width: 80vw;
+    }
+
+    input[type=email]{
+        width: 30vw;
+    }
+
+    input[type=text]{
+        width: 30vw;
+    }
+
+    .FinishLine button {
+        margin-left: 22%;
+    }
+
+    /*Cambios para la Sexta Página*/
+    .Frase_del_dia_ventana i{
+        left: 90%;
+    }
+
+    #travelInputs div{
+         width: fit-content;
+    }
+
+    #travelInputs label{
+        margin: 0;
+    }
+    #travelInputs input{
+        margin: 0;
+    }
+
+    /*Cambios para el Footer*/
+    .SecondFooterPart{
+        display: grid;
+        margin-top: 3rem;
+    }
+    
+}
+
+/*Media para Cuando se disminuye en Computadora con Cursor****************************************************/
+@media screen and (max-width: 1200px) and (min-width: 768px) {
+
+    .logo img{
+        display: none;
+    }
+    .MenuPrincipal a{
+        font-size: 2vw;
+    }
+
+     #travelInputs div{
+         width: fit-content;
+    }
+
+    #travelInputs label{
+        margin: 0;
+    }
+    #travelInputs input{
+        margin: 0;
+    }
+    /*Cambios para el formulario de Log In*/
+    #contenidoLogIn {
+        width: 65vw;
+        height: fit-content;
+    }
+
+    .LogInPage{
+        width: 63.5vw;
+    }
+
+    .LogInTitle{
+        font-size: 3rem;
+    }
+
+    .LogInForm input[type=password]{
+        margin-bottom: 2rem;
+    }
+
+    .labelLogIn{
+        font-size: 2rem;
+        width: 45vw;
+    }
+    #testBondadTitle h2{
+        font-size: 2.5rem;
+    }
+    .labelBondad{
+        font-size: 1.3rem;
+    }
+    /*Divisor de pagina*/
+    .PageDivisor{
+        height: 11vh;
+    }
+
+    .SantaTitle h2{
+        font-size: 4rem;
+    }
+
+    /*Cambios para la Sexta Página*/
+    .Frase_del_dia_ventana i{
+        left: 90%;
+    }
+
+}
